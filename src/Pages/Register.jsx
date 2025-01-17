@@ -1,13 +1,17 @@
 import { Link, useNavigate,  } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import useAuth from '../../hooks/useAuth'
+//import useAuth from '../../hooks/useAuth'
 import { toast } from 'react-hot-toast'
 import { TbFidgetSpinner } from 'react-icons/tb'
-import { imageUpload, saveUser } from '../../api/utils'
+
+import { useContext} from 'react'
+import { AuthContext } from '../Provider/AuthProvider'
+import { imageUpload, saveUser } from '../api/utils'
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
+  const { createUser, updateUserProfile, signInWithGoogle,loading } = useContext(AuthContext)
   const navigate = useNavigate()
+  //const [loading,setLoading]=useState(false)
   // form submit handler
   const handleSubmit = async event => {
     event.preventDefault()
@@ -42,7 +46,10 @@ const Register = () => {
     try {
       //User Registration using google
       const data = await signInWithGoogle()
-      await saveUser(data?.user)
+      console.log(data?.user)
+      
+      //setLoading(false)
+       await saveUser(data?.user)
       navigate('/')
       toast.success('Signup Successful')
     } catch (err) {
@@ -55,7 +62,7 @@ const Register = () => {
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to PlantNet</p>
+          <p className='text-sm text-gray-400'>Welcome to FitMe</p>
         </div>
         <form
           onSubmit={handleSubmit}

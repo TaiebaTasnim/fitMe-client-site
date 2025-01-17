@@ -8,6 +8,8 @@ import Home from "../Pages/Home";
 import Dashboard from "../MainLayout/Dashboard";
 import Register from "../Pages/register";
 import Login from "../Pages/login";
+import { TrainerForm } from "../Pages/Member/TrainerForm";
+import AddClassForm from "../Pages/Admin/AddClassForm";
 
 
 const Route = createBrowserRouter([
@@ -36,7 +38,17 @@ const Route = createBrowserRouter([
       {
             path:"dashboard",
             element:<Dashboard></Dashboard>,
-            errorElement:<ErrorPage></ErrorPage>
+            errorElement:<ErrorPage></ErrorPage>,
+            children:[
+                  {
+                        path:'beTrainer',
+                        element:<TrainerForm></TrainerForm>
+                  },
+                  {
+                        path:'addClasses',
+                        element:<AddClassForm></AddClassForm>
+                  },
+            ]
       }
 ])
 export default Route

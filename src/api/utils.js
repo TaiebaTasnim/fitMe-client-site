@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios'
+import useAxiosPublic from '../hooks/useAxiosPublic'
+//import useAxiosPublic from '../hooks/useAxiosPublic'
 // Upload image and return image url
 
 export const imageUpload = async imageData => {
@@ -12,7 +15,8 @@ export const imageUpload = async imageData => {
 }
 
 export const saveUser = async user => {
-  await axios.post(`${import.meta.env.VITE_API_URL}/users/${user?.email}`, {
+      const axiosPublic = useAxiosPublic(); 
+  await axiosPublic.post(`/users/${user?.email}`, {
     name: user?.displayName,
     image: user?.photoURL,
     email: user?.email,

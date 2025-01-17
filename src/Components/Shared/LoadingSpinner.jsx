@@ -10,7 +10,8 @@ const LoadingSpinner = ({ smallHeight }) => {
       flex-col 
       justify-center 
       items-center `}
-    >
+    > 
+      
       <ScaleLoader size={100} color='lime' />
     </div>
   )

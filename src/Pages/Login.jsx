@@ -1,20 +1,23 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 
 import toast from 'react-hot-toast'
 import { TbFidgetSpinner } from 'react-icons/tb'
-import LoadingSpinner from '../../components/Shared/LoadingSpinner'
-import { saveUser } from '../../api/utils'
+
+//import { saveUser } from '../../api/utils'
 import { useContext } from 'react'
 import { AuthContext } from '../Provider/AuthProvider'
+import LoadingSpinner from '../Components/Shared/LoadingSpinner'
+import { saveUser } from '../api/utils'
 
 const Login = () => {
-  const { signIn, signInWithGoogle, loading, user } =useContext(AuthContext) 
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location?.state?.from?.pathname || '/'
-  if (loading) return <LoadingSpinner />
-  if (user) return <Navigate to={from} replace={true} />
+  const { signIn, signInWithGoogle, loading } =useContext(AuthContext) 
+  const navigate=useNavigate()
+  //const navigate = useNavigate()
+  //const location = useLocation()
+  //const from = location?.state?.from?.pathname || '/'
+  if (loading) return <LoadingSpinner></LoadingSpinner>
+  //if (user) return <Navigate to={from} replace={true} />
   // form submit handler
   const handleSubmit = async event => {
     event.preventDefault()
@@ -26,8 +29,9 @@ const Login = () => {
       //User Login
       await signIn(email, password)
 
-      navigate(from, { replace: true })
+      //navigate(from, { replace: true })
       toast.success('Login Successful')
+      navigate("/")
     } catch (err) {
       console.log(err)
       toast.error(err?.message)
@@ -39,9 +43,10 @@ const Login = () => {
     try {
       //User Registration using google
       const data = await signInWithGoogle()
+      console.log(data?.user)
       // save user info in db if the user is new
-      await saveUser(data?.user)
-      navigate(from, { replace: true })
+     await saveUser(data?.user)
+      //navigate(from, { replace: true })
       toast.success('Login Successful')
     } catch (err) {
       console.log(err)
@@ -109,11 +114,11 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <div className='space-y-1'>
+        {/* <div className='space-y-1'>
           <button className='text-xs hover:underline hover:text-lime-500 text-gray-400'>
             Forgot password?
           </button>
-        </div>
+        </div> */}
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
           <p className='px-3 text-sm dark:text-gray-400'>
