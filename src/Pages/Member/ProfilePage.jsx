@@ -1,54 +1,65 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import axios from "axios";
-import { getAuth } from "firebase/auth";
 
-// Function to fetch user data using axios
-const fetchUserData = async (email) => {
-  const response = await axios.get(`/users/${email}`);
-  return response.data;
-};
 
-// Function to update user data using axios
-const updateUserData = async (email, updatedData) => {
-  const response = await axios.put(`/users/${email}`, updatedData);
-  return response.data;
-};
+import { AuthContext } from "../../Provider/AuthProvider";
+import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { imageUpload } from "../../api/utils";
+
+
+
+
+
 
 const ProfilePage = () => {
-  const auth = getAuth();
-  const user = auth.currentUser; // Get the current Firebase user object
+  const { user } = useContext(AuthContext); // Get the current Firebase user object
+  //const queryClient = useQueryClient();
+  const axiosSecure=useAxiosSecure()
+  
 
-  const { data: userData, isLoading, isError, error } = useQuery(
-    ["user", user?.email],
-    () => fetchUserData(user?.email),
-    { enabled: !!user?.email } // Only run if email is available
-  );
+  const { data: userData={}, isLoading, isError, error,refetch } = useQuery({
+    queryKey: ["user", user?.email],
+    queryFn:async () => {
+      const response = await axiosSecure.get(`/users/${user?.email}`);
+      console.log(response.data)
+      return response.data;
+    },
+    enabled: !!user?.email, // Only run if email is available
+  });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState(userData?.name || "");
-  const [profilePicture, setProfilePicture] = useState(userData?.photoURL || "");
+  //const [profilePicture, setProfilePicture] = useState(userData?.photoURL || "");
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const imageFile = e.target.photoURL.files[0] || "";
+    let photo = "";
+     if (imageFile) {
+          photo = await imageUpload(imageFile);
+        }
     const updatedUser = {
       name,
-      photoURL: profilePicture,
+      photoURL: photo,
     };
 
     try {
-      const response = await updateUserData(user?.email, updatedUser);
-      console.log(response)
+      const response = await axiosSecure.put(`/users/${user?.email}`, updatedUser);
+      console.log(response.data)
       toast.success("Profile updated successfully!");
+      refetch()
       setIsModalOpen(false);
-      // Optionally, you can also refetch data after updating, if necessary
+
+      // Invalidate the user data query to trigger a refetch
+      //queryClient.invalidateQueries(["user", user?.email]);
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to update profile.");
     }
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
@@ -56,7 +67,7 @@ const ProfilePage = () => {
       <div className="bg-gray-100 rounded-lg shadow-md p-6 max-w-md mx-auto">
         <div className="text-center">
           <img
-            src={userData?.photoURL || "https://via.placeholder.com/150"}
+            src={userData?.image}
             alt="Profile"
             className="w-32 h-32 rounded-full mx-auto object-cover"
           />
@@ -84,6 +95,7 @@ const ProfilePage = () => {
                 <label className="block font-semibold mb-1">Name</label>
                 <input
                   type="text"
+                  placeholder={userData.name}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -103,10 +115,10 @@ const ProfilePage = () => {
                 <label className="block font-semibold mb-1">Profile Picture</label>
                 <input
                   type="file"
+                   id="photoURL"
+                   name="photoURL"
                   accept="image/*"
-                  onChange={(e) =>
-                    setProfilePicture(URL.createObjectURL(e.target.files[0]))
-                  }
+                  
                   className="w-full p-2 border rounded-lg"
                 />
               </div>

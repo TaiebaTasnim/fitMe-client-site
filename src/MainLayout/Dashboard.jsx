@@ -26,7 +26,7 @@ const Dashboard = () => {
                         </li>
                         <li className="flex items-center gap-2">
                             <FaCalendar></FaCalendar>
-                            <NavLink to="/dashboard/history">
+                            <NavLink to="/dashboard/profile">
 
                                 My Profile</NavLink>
                         </li>
