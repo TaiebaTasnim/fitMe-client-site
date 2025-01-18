@@ -1,15 +1,36 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const NewsletterSection = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const axiosPublic=useAxiosPublic()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle subscription logic here
     console.log('Subscribed with:', name, email);
+    try {
+      const response = await axiosPublic.post('/subscribe', {
+        name,
+        email,
+      });
+      console.log(response.data)
+
+      if (response.data.result.insertedId) {
+        toast.success('Subscription successful!');
+        setName('');
+        setEmail('');
+      } else {
+        toast.error('Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'An error occurred. Please try again.');
+    }
   };
+
 
   return (
     <section className="bg-[#abc502] container mx-auto w-[90%] py-12 my-10">
@@ -19,6 +40,7 @@ const NewsletterSection = () => {
         <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4">
           <input
             type="text"
+            required
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -26,6 +48,7 @@ const NewsletterSection = () => {
           />
           <input
             type="email"
+            required
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

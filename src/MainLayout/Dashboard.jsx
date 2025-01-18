@@ -76,7 +76,7 @@ const Dashboard = () => {
 
                     <li className="flex items-center gap-2">
                         <FaHome></FaHome>
-                        <NavLink to="/dashboard/userHome">
+                        <NavLink to="/dashboard/subscribers">
 
                             Newsletter Subscribers</NavLink>
 

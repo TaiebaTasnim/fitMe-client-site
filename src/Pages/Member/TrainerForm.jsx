@@ -22,6 +22,8 @@ export const TrainerForm = () => {
     available_time: { start: "", end: "" },
     years_of_experience: "",
     biography: "",
+    facebook_profile: "",
+    instagram_profile: "",
   });
 
   const daysOptions = [
@@ -42,6 +44,18 @@ export const TrainerForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["trainers"] });
       toast.success("Trainer data saved successfully!");
+      setFormData({
+            full_name: "",
+            email: user?.email || "",
+            age: "",
+            skills: [],
+            available_days: [],
+            available_time: { start: "", end: "" },
+            years_of_experience: "",
+            biography: "",
+            facebook_profile: "",
+            instagram_profile: "",
+          });
       if (formRef.current) {
         formRef.current.reset();
       }
@@ -129,6 +143,7 @@ export const TrainerForm = () => {
               type="email"
               id="email"
               name="email"
+              
               value={formData.email}
               readOnly
               className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none"
@@ -144,7 +159,7 @@ export const TrainerForm = () => {
               Age*
             </label>
             <input
-              type="number"
+              type="text"
               id="age"
               name="age"
               value={formData.age}
@@ -179,12 +194,13 @@ export const TrainerForm = () => {
     className="block text-sm font-medium text-gray-600 mb-2"
     htmlFor="skills"
   >
-    Skills
+    Skills*
   </label>
   <div className="grid grid-cols-3 gap-4">
     {skills.map((skill) => (
       <label key={skill._id} className="inline-flex items-center">
         <input
+        
           type="checkbox"
           name="skills"
           value={skill.name}
@@ -203,6 +219,7 @@ export const TrainerForm = () => {
               }));
             }
           }}
+          
           className="form-checkbox h-5 w-5 text-[#abc502] rounded"
         />
         <span className="ml-2 text-gray-700">{skill.name}</span>
@@ -218,9 +235,10 @@ export const TrainerForm = () => {
               className="block text-sm font-medium text-gray-600 mb-1"
               htmlFor="available_days"
             >
-              Available Days
+              Available Days*
             </label>
             <Select
+            required
               isMulti
               options={daysOptions}
               onChange={(selected) =>
@@ -235,7 +253,7 @@ export const TrainerForm = () => {
               className="block text-sm font-medium text-gray-600 mb-1"
               htmlFor="available_time"
             >
-              Available Time
+              Available Time*
             </label>
             <div className="flex items-center gap-4">
               <div>
@@ -246,6 +264,7 @@ export const TrainerForm = () => {
                   Start
                 </label>
                 <input
+                
                   type="time"
                   id="start_time"
                   name="start"
@@ -309,6 +328,41 @@ export const TrainerForm = () => {
               className="w-full focus:ring-[#abc502] px-4 py-2 border rounded-lg focus:outline-none"
             />
           </div>
+          {/* Facebook Profile */}
+          <div>
+            <label
+              htmlFor="facebook_profile"
+              className="block text-sm font-medium text-gray-600 mb-1"
+            >
+              Facebook Profile Link
+            </label>
+            <input
+              type="url"
+              id="facebook_profile"
+              name="facebook_profile"
+              value={formData.facebook_profile}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+            />
+          </div>
+
+          {/* Instagram Profile */}
+          <div>
+            <label
+              htmlFor="instagram_profile"
+              className="block text-sm font-medium text-gray-600 mb-1"
+            >
+              Instagram Profile Link
+            </label>
+            <input
+              type="url"
+              id="instagram_profile"
+              name="instagram_profile"
+              value={formData.instagram_profile}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+            />
+          </div>
 
           {/* Biography */}
           <div className="col-span-2">
@@ -337,7 +391,7 @@ export const TrainerForm = () => {
             disabled={mutation.isLoading}
             className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg hover:bg-black hover:text-white focus:ring-[#abc502]  focus:outline-none"
           >
-            {mutation.isLoading ? "Saving..." : "Submit"}
+            {mutation.isLoading ? "Saving..." : "Apply"}
           </button>
         </div>
       </form>

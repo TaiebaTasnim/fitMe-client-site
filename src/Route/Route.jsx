@@ -10,6 +10,11 @@ import Register from "../Pages/register";
 import Login from "../Pages/login";
 import { TrainerForm } from "../Pages/Member/TrainerForm";
 import AddClassForm from "../Pages/Admin/AddClassForm";
+import AllClasses from "../Pages/PublicPage/AllClasses";
+import AllTrainers from "../Pages/PublicPage/AllTrainers";
+import TrainerDetails from "../Pages/PrivatePage/TrainerDetails";
+import Subscribers from "../Pages/Admin/Subscribers";
+import ProfilePage from "../Pages/Member/ProfilePage";
 
 
 const Route = createBrowserRouter([
@@ -33,6 +38,27 @@ const Route = createBrowserRouter([
                   element:<Login></Login>,
                  
             },
+            {
+                  path:"/allClasses",
+                  element:<AllClasses></AllClasses>,
+                 
+            },
+            {
+                  path:"/allTrainers",
+                  element:<AllTrainers></AllTrainers>,
+                 
+            },
+            {
+                  path:"/trainerDetails/:trainerId",
+                  element:<TrainerDetails></TrainerDetails>,
+                 
+            },
+            {
+                  path:"/community",
+                  element:<AllClasses></AllClasses>,
+                 
+            },
+
         ]
       },
       {
@@ -47,6 +73,14 @@ const Route = createBrowserRouter([
                   {
                         path:'addClasses',
                         element:<AddClassForm></AddClassForm>
+                  },
+                  {
+                        path:'subscribers',
+                        element:<Subscribers></Subscribers>
+                  },
+                  {
+                        path:'profile',
+                        element:<ProfilePage></ProfilePage>
                   },
             ]
       }

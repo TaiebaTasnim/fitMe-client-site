@@ -57,19 +57,64 @@ export const ComplexNavbar = () => {
             FitMe
           </Typography>
           <div className="hidden lg:flex gap-4">
-            {["Home", "All Trainer", "All Classes", "Community"].map((item, index) => (
+            
               <NavLink
-                key={index}
-                to={`/${item.replace(" ", "")}`}
+                
+                to="/"
+                // to={`/${item.replace(" ", "")}`}
                 className={({ isActive }) =>
                   isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
                 }
               >
-                <Typography as="a" href="#" className="hover:underline">
-                  {item}
+                <Typography  className="hover:underline">
+                  Home
                 </Typography>
               </NavLink>
-            ))}
+              
+              <NavLink
+                
+              to="/allTrainers"
+              // to={`/${item.replace(" ", "")}`}
+              className={({ isActive }) =>
+                isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+              }
+            >
+              
+              
+            
+              <Typography  className="hover:underline">
+                All Trainers
+              </Typography>
+            </NavLink>
+            
+            <NavLink
+            
+            to="/allClasses"
+           
+            className={({ isActive }) =>
+              isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+            }
+          >
+            <Typography className="hover:underline">
+              All Classes
+            </Typography>
+          </NavLink>
+
+            
+           
+          <NavLink
+          
+          
+          to="/community"
+          className={({ isActive }) =>
+            isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+          }
+        >
+          <Typography  className="hover:underline">
+            Community
+          </Typography>
+        </NavLink>
+           
           </div>
           <div className="flex items-center">
             <div className="flex gap-0 lg:flex items-center lg:gap-4">
@@ -141,19 +186,63 @@ export const ComplexNavbar = () => {
         </div>
         <Collapse open={isNavOpen}>
           <div className="flex flex-col gap-2">
-            {["Home", "All Trainer", "All Classes", "Community"].map((item, index) => (
-              <NavLink
-                key={index}
-                to={`/${item.replace(" ", "")}`}
+          <NavLink
+                
+                to="/"
+                // to={`/${item.replace(" ", "")}`}
                 className={({ isActive }) =>
                   isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
                 }
               >
-                <Typography as="a" href="#" className="hover:underline">
-                  {item}
+                <Typography  className="hover:underline">
+                  Home
                 </Typography>
               </NavLink>
-            ))}
+              
+              <NavLink
+                
+              to="/allTrainers"
+              
+              className={({ isActive }) =>
+                isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+              }
+            >
+              
+              
+            
+              <Typography  className="hover:underline">
+                All Trainers
+              </Typography>
+            </NavLink>
+            
+            <NavLink
+            
+            to="/allClasses"
+           
+            className={({ isActive }) =>
+              isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+            }
+          >
+            <Typography className="hover:underline">
+              All Classes
+            </Typography>
+          </NavLink>
+
+            
+           
+          <NavLink
+          
+          
+          to="/community"
+          className={({ isActive }) =>
+            isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
+          }
+        >
+          <Typography  className="hover:underline">
+            Community
+          </Typography>
+        </NavLink>
+            
           </div>
         </Collapse>
       </Navbar>
