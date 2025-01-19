@@ -77,7 +77,7 @@ const ProfilePage = () => {
             Last Login: {user?.metadata?.lastSignInTime || "N/A"}
           </p>
           <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            className="mt-4 px-4 py-2 bg-[#abc502] text-white rounded-lg hover:bg-black"
             onClick={() => setIsModalOpen(true)}
           >
             Update Profile

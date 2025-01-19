@@ -15,6 +15,9 @@ import AllTrainers from "../Pages/PublicPage/AllTrainers";
 import TrainerDetails from "../Pages/PrivatePage/TrainerDetails";
 import Subscribers from "../Pages/Admin/Subscribers";
 import ProfilePage from "../Pages/Member/ProfilePage";
+import ActivityLog from "../Pages/Member/ActivityLog";
+import AppliedTrainers from "../Pages/Admin/AppliedTrainers";
+import AppliedTrainerDetails from "../Pages/Admin/AppliedTrainerDetails";
 
 
 const Route = createBrowserRouter([
@@ -81,6 +84,18 @@ const Route = createBrowserRouter([
                   {
                         path:'profile',
                         element:<ProfilePage></ProfilePage>
+                  },
+                  {
+                        path:'activityLog',
+                        element:<ActivityLog></ActivityLog>
+                  },
+                  {
+                        path:'appliedTrainers',
+                        element:<AppliedTrainers></AppliedTrainers>
+                  },
+                  {
+                        path:'appliedTrainerDetails/:email',
+                        element:<AppliedTrainerDetails></AppliedTrainerDetails>
                   },
             ]
       }

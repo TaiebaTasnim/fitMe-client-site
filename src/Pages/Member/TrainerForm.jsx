@@ -203,18 +203,18 @@ export const TrainerForm = () => {
         
           type="checkbox"
           name="skills"
-          value={skill.name}
+          value={skill.class_name}
           onChange={(e) => {
             if (e.target.checked) {
               setFormData((prevData) => ({
                 ...prevData,
-                skills: [...prevData.skills, skill.name],
+                skills: [...prevData.skills, skill.class_name],
               }));
             } else {
               setFormData((prevData) => ({
                 ...prevData,
                 skills: prevData.skills.filter(
-                  (selectedSkill) => selectedSkill !== skill.name
+                  (selectedSkill) => selectedSkill !== skill.class_name
                 ),
               }));
             }
@@ -222,7 +222,7 @@ export const TrainerForm = () => {
           
           className="form-checkbox h-5 w-5 text-[#abc502] rounded"
         />
-        <span className="ml-2 text-gray-700">{skill.name}</span>
+        <span className="ml-2 text-gray-700">{skill.class_name}</span>
       </label>
     ))}
   </div>

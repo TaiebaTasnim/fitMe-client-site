@@ -19,7 +19,7 @@ const Dashboard = () => {
 
                         <li className="flex items-center gap-2">
                             <FaHome></FaHome>
-                            <NavLink to="/dashboard/userHome">
+                            <NavLink to="/dashboard/activityLog">
 
                                 Activity Log</NavLink>
 
@@ -89,7 +89,7 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaShoppingCart></FaShoppingCart>
-                        <NavLink to="/dashboard/cart">
+                        <NavLink to="/dashboard/appliedTrainers">
 
                             Applied Trainers </NavLink>
                     </li>
