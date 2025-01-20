@@ -1,12 +1,14 @@
-import  { useRef } from "react";
+import  { useContext, useRef } from "react";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../api/utils";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddNewForum = () => {
   const formRef = useRef(null); // Reference to reset the form
   const axiosSecure = useAxiosSecure();
+  const {user}=useContext(AuthContext)
 
   const addForumMutation = useMutation({
     mutationFn: async (forumData) => {
@@ -36,6 +38,8 @@ const AddNewForum = () => {
       forum_title: event.target.forum_title.value,
       class_details: event.target.class_details.value,
       banner_image: bannerImageURL,
+      userEmail:user?.email,
+
     };
 
     addForumMutation.mutate(forumData);
