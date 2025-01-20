@@ -105,7 +105,7 @@ export const ComplexNavbar = () => {
           <NavLink
           
           
-          to="/community"
+          to="/forum"
           className={({ isActive }) =>
             isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
           }
@@ -233,7 +233,7 @@ export const ComplexNavbar = () => {
           <NavLink
           
           
-          to="/community"
+          to="/forum"
           className={({ isActive }) =>
             isActive ? "text-[#abc502] px-4 py-2" : "text-white px-4 py-2"
           }

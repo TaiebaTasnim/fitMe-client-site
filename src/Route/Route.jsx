@@ -20,6 +20,9 @@ import AppliedTrainers from "../Pages/Admin/AppliedTrainers";
 import AppliedTrainerDetails from "../Pages/Admin/AppliedTrainerDetails";
 import VerifiedTrainers from "../Pages/Admin/VerifiedTrainers";
 import AddNewForum from "../Pages/Admin/AddNewForum";
+import Forum from "../Pages/PublicPage/Forum";
+import TrainerBookedPage from "../Pages/PrivatePage/TrainerBookedPage";
+import Payment from "../Pages/PrivatePage/Payment";
 
 
 const Route = createBrowserRouter([
@@ -59,10 +62,21 @@ const Route = createBrowserRouter([
                  
             },
             {
-                  path:"/community",
-                  element:<AllClasses></AllClasses>,
+                  path:"/forum",
+                  element:<Forum></Forum>,
                  
             },
+            {
+                  path:"/trainerBooked/:index/:id",
+                  element:<TrainerBookedPage></TrainerBookedPage>,
+                 
+            },
+            {
+                  path:"/payment/:index/:id/:pkgId",
+                  element:<Payment></Payment>,
+                 
+            },
+
 
         ]
       },

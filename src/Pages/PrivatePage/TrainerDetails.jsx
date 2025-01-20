@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
@@ -92,7 +92,8 @@ const TrainerDetails = () => {
                     <h2 className="text-2xl font-bold text-center mb-6">Available Slots</h2>
                     <div className="grid grid-cols-2 gap-4">
                       {trainer.available_days.map((day, index) => (
-                        <div key={index}>
+                        <Link key={index} to={`/trainerBooked/${index}/${trainer._id}`}>
+                        <div className="border-red-600 border-2" >
                           <h3 className="text-lg font-semibold">{day}</h3>
                           
                             <button
@@ -105,6 +106,8 @@ const TrainerDetails = () => {
                             </button>
                         
                         </div>
+                        </Link>
+                        
                       ))}
                     </div>
                   </div>
