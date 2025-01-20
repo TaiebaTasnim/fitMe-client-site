@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import { Link } from "react-router-dom";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
 
 const AllClasses = () => {
   const axiosPublic = useAxiosPublic();
@@ -21,6 +24,7 @@ const AllClasses = () => {
           limit: 5,              // Limit of 5 classes per page
         },
       });
+      console.log(res.data)
       return res.data;
     },
     keepPreviousData: true, // Keep the previous page's data while new data is fetched
@@ -81,14 +85,39 @@ const AllClasses = () => {
                   <div className="flex items-center space-x-3">
                     {classItem.trainers.length > 0 ? (
                       classItem.trainers.map((trainer, index) => (
-                        <div key={index} className="relative">
+                        <Link key={index} to={`/trainerDetails/${trainer._id}`}>
+                         <div  className="relative"
+                  data-tooltip-id={`tooltip-${classItem.class_name}`}
+                  data-tooltip-content={trainer.full_name}
+                  style={{
+                    display: "inline-block",
+                    position: "relative",
+                  }}>
                           <img
-                            src={trainer.image}
-                            alt={trainer.name}
+                            src={trainer.
+                              profile_image}
+                            alt={trainer.full_name}
                             className="w-10 h-10 rounded-full border-2 border-gray-200"
-                          />
-                          <span className="sr-only">{trainer.name}</span>
+                            style={{
+                              position: "relative",
+                              zIndex: 1, // To ensure the image is above the tooltip
+                            }}/>
+                          <ReactTooltip id={`tooltip-${classItem.class_name}`} place="bottom" effect="solid"  style={{
+                    backgroundColor: "#abc502",
+                    color: "black",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    fontSize: "12px",
+                    position: "absolute",
+                    //transform: "translateY(-1px)", // Moves tooltip upwards
+                    zIndex: 10,
+                    whiteSpace: "nowrap",
+                  }} />
+                          
+                          
                         </div>
+                        </Link>
+                       
                       ))
                     ) : (
                       <h1 className="text-sm font-semibold text-gray-700 mb-2">No Trainers Available yet.</h1>

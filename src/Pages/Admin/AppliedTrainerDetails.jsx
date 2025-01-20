@@ -3,12 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const AppliedTrainerDetails = () => {
   const { email } = useParams();
   console.log(email)
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  
+  const [feedback, setFeedback] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch the trainer details using tanstack query
   const { data: trainer, isLoading, isError, error, refetch } = useQuery({
@@ -46,8 +50,25 @@ const AppliedTrainerDetails = () => {
     updateTrainer("verified", "trainer");
   };
 
-  const handleReject = () => {
+  const handleReject =async () => {
     updateTrainer("rejected");
+    try {
+      
+      // Save feedback to the feedbackCollection
+      await axiosSecure.post(`/feedback`, {
+        trainer_id: trainer._id,
+        email: trainer.email,
+        feedback,
+      });
+
+      toast.success(" Feedback saved successfully!");
+      refetch(); // Refetch trainer details
+      setIsModalOpen(false); // Close modal
+      navigate("/dashboard/appliedTrainers");
+    } catch (error) {
+      toast.error("Failed to reject the trainer. Please try again.");
+      console.error(error.message);
+    }
   };
 
   return (
@@ -87,7 +108,7 @@ const AppliedTrainerDetails = () => {
            </div>           
         <div className="flex justify-between mt-6">
           <button
-            onClick={handleReject}
+             onClick={() => setIsModalOpen(true)}
             className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
           >
             Reject
@@ -99,6 +120,35 @@ const AppliedTrainerDetails = () => {
             Confirm
           </button>
         </div>
+         {/* Modal for Rejection Feedback */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-6 w-1/3">
+            <h3 className="text-lg font-bold mb-4">Provide Rejection Feedback</h3>
+            <textarea
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg p-2"
+              rows="4"
+              placeholder="Enter feedback..."
+            ></textarea>
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleReject}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     
   );

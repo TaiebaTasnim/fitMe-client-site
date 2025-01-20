@@ -83,7 +83,7 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaCalendar></FaCalendar>
-                        <NavLink to="/dashboard/history">
+                        <NavLink to="/dashboard/verifiedTrainers">
 
                             All Trainers</NavLink>
                     </li>
@@ -105,6 +105,13 @@ const Dashboard = () => {
 
                             Add New Class </NavLink>
                     </li>
+                    <li className="flex items-center gap-2">
+                        <FaShoppingCart></FaShoppingCart>
+                        <NavLink to="/dashboard/addForum">
+
+                            Add New Forum </NavLink>
+                    </li>
+
 
 
 

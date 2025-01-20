@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { FaEye } from "react-icons/fa";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner"; // Custom loading spinner
 import useAxiosSecure from "../../hooks/useAxiosSecure"; // Axios hook
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const ActivityLog = () => {
   const axiosSecure = useAxiosSecure();
   const {user}=useContext(AuthContext)
+  const [clicked, setClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch trainers with "Pending" or "Rejected" status
   const { data: trainers = [], isLoading, isError, error } = useQuery({
@@ -18,6 +20,22 @@ const ActivityLog = () => {
       },
       enabled: !!user?.email, // Only run if email is available
     });
+
+    const { data: feedback = [] } = useQuery({
+      queryKey: ["feedback", user?.email],
+      queryFn: async () => {
+        const response = await axiosSecure.get(`/feedback/${user?.email}`);
+        console.log(feedback)
+        return response.data;
+      },
+      enabled: clicked, 
+    });
+
+    const handlefeedback=()=>{
+      setClicked(true);
+      setIsModalOpen(true)
+
+    }
 
   if (isLoading) return <LoadingSpinner />;
   if (isError) return <p className="text-red-500">Error: {error.message}</p>;
@@ -52,7 +70,7 @@ const ActivityLog = () => {
                 <td className="px-6 py-4 text-sm text-gray-700 flex items-center gap-2">
                   <span>{trainer.status}</span>
                   {trainer.status === "rejected" && (
-                    <FaEye className="text-black cursor-pointer hover:text-[#abc502]" />
+                    <FaEye onClick={handlefeedback} className="text-black cursor-pointer hover:text-[#abc502]" />
                   )}
                 </td>
               </tr>
@@ -60,6 +78,23 @@ const ActivityLog = () => {
           </tbody>
         </table>
       </div>
+       {/* Feedback Modal */}
+       {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-6 w-1/3">
+            <h3 className="text-lg font-bold mb-4">Rejection Feedback</h3>
+            <p>{feedback.feedback}</p>
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

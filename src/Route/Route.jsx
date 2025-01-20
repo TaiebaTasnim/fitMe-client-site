@@ -18,6 +18,8 @@ import ProfilePage from "../Pages/Member/ProfilePage";
 import ActivityLog from "../Pages/Member/ActivityLog";
 import AppliedTrainers from "../Pages/Admin/AppliedTrainers";
 import AppliedTrainerDetails from "../Pages/Admin/AppliedTrainerDetails";
+import VerifiedTrainers from "../Pages/Admin/VerifiedTrainers";
+import AddNewForum from "../Pages/Admin/AddNewForum";
 
 
 const Route = createBrowserRouter([
@@ -96,6 +98,14 @@ const Route = createBrowserRouter([
                   {
                         path:'appliedTrainerDetails/:email',
                         element:<AppliedTrainerDetails></AppliedTrainerDetails>
+                  },
+                  {
+                        path:'verifiedTrainers',
+                        element:<VerifiedTrainers></VerifiedTrainers>
+                  },
+                  {
+                        path:'addForum',
+                        element:<AddNewForum></AddNewForum>
                   },
             ]
       }

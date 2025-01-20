@@ -34,7 +34,7 @@ const TrainerDetails = () => {
                         alt={trainer.full_name}
                         className="w-32 h-32 rounded-full shadow-lg mb-4"
                       />
-                      <h2 className="text-2xl font-bold text-gray-800">{trainer.name}</h2>
+                      <h2 className="text-2xl font-bold text-gray-800">{trainer.full_name}</h2>
                       <p className="text-gray-600">Age: {trainer.age}</p>
                       <p className="text-gray-600">
                         Experience: {trainer.years_of_experience} years
