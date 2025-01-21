@@ -23,6 +23,7 @@ import AddNewForum from "../Pages/Admin/AddNewForum";
 import Forum from "../Pages/PublicPage/Forum";
 import TrainerBookedPage from "../Pages/PrivatePage/TrainerBookedPage";
 import Payment from "../Pages/PrivatePage/Payment";
+import BookedTrainer from "../Pages/Member/BookedTrainer";
 
 
 const Route = createBrowserRouter([
@@ -120,6 +121,10 @@ const Route = createBrowserRouter([
                   {
                         path:'addForum',
                         element:<AddNewForum></AddNewForum>
+                  },
+                  {
+                        path:'bookedTrainer/:email',
+                        element:<BookedTrainer></BookedTrainer>
                   },
             ]
       }

@@ -10,7 +10,7 @@ const TrainerBookedPage = () => {
       const {index,id}=useParams()
       const axiosSecure=useAxiosSecure()
       const [packages]=usePackege()
-      //console.log(packages)
+      console.log(packages)
    
       const { data: trainer, isLoading, isError, error } = useQuery({
             queryKey: ["trainer", id],

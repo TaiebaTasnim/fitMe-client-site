@@ -29,7 +29,7 @@ const Payment = () => {
           });
 
           const {  data } = useQuery({
-            queryKey: ['packages'],
+            queryKey: ['package'],
             queryFn: async() => {
                 const res = await axiosPublic.get(`/package/${pkgId}`);
                 console.log(res.data)
@@ -84,13 +84,17 @@ const Payment = () => {
             <p className="text-gray-800 font-semibold">{user?.email}</p>
           </div>
         </div>
-        <button className="mt-6 w-full bg-blue-500 text-white py-2 rounded-md text-lg font-medium hover:bg-blue-600 transition">
-          Proceed to Payment
-        </button>
-      </div>
-      <Elements stripe={stripePromise}>
-                    <CheckoutForm></CheckoutForm>
+        <hr className="mt-4"></hr>
+        <div className="mt-6">
+           
+            
+<Elements stripe={stripePromise}>
+                    <CheckoutForm pkgId={pkgId} trainer={trainer} index={index}></CheckoutForm>
                 </Elements>
+        </div>
+        
+      </div>
+      
     </div>
       );
 };

@@ -2,12 +2,15 @@ import { Outlet } from "react-router-dom";
 import { FaCalendar, FaHome, FaLock, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useRole from "../hooks/useRole";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 
 
 const Dashboard = () => {
     const [role] = useRole()
+    const {user}=useContext(AuthContext)
     return (
 
         <div className="relative min-h-screen md:flex bg-white">
@@ -32,7 +35,7 @@ const Dashboard = () => {
                         </li>
                         <li className="flex items-center gap-2">
                             <FaShoppingCart></FaShoppingCart>
-                            <NavLink to="/dashboard/cart">
+                            <NavLink to={`/dashboard/bookedTrainer/${user?.email}`}>
 
                                 Booked Trainer </NavLink>
                         </li>
