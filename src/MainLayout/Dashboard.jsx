@@ -1,16 +1,31 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { FaCalendar, FaHome, FaLock, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useRole from "../hooks/useRole";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 
 
 const Dashboard = () => {
     const [role] = useRole()
-    const {user}=useContext(AuthContext)
+    const {user,signout}=useContext(AuthContext)
+    
+  const navigate=useNavigate()
+
+  const handlesignout = () => {
+    signout()
+      .then(() => {
+        toast.success("Logged out successfully");
+        navigate("/login")
+      })
+      .catch((error) => {
+        toast.error(`Logout failed: ${error.message}`);
+      });
+  };
+
     return (
 
         <div className="relative min-h-screen md:flex bg-white">
@@ -65,7 +80,7 @@ const Dashboard = () => {
 
                         <li className="flex items-center gap-2" >
                             <FaLock></FaLock>
-                            <NavLink to="/order/contact">
+                            <NavLink to="/order/contact"  onClick={handlesignout}>
 
                                 Log Out</NavLink>
                         </li>
@@ -135,7 +150,7 @@ const Dashboard = () => {
 
                     <li className="flex items-center gap-2" >
                         <FaLock></FaLock>
-                        <NavLink to="/order/contact">
+                        <NavLink to="/order/contact"  onClick={handlesignout}>
 
                             Log Out</NavLink>
                     </li>

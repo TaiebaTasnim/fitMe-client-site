@@ -13,7 +13,7 @@ import { saveUser } from '../api/utils'
 const Login = () => {
   const { signIn, signInWithGoogle, loading } =useContext(AuthContext) 
   const navigate=useNavigate()
-  //const navigate = useNavigate()
+ 
   //const location = useLocation()
   //const from = location?.state?.from?.pathname || '/'
   if (loading) return <LoadingSpinner></LoadingSpinner>
@@ -46,7 +46,7 @@ const Login = () => {
       console.log(data?.user)
       // save user info in db if the user is new
      await saveUser(data?.user)
-      //navigate(from, { replace: true })
+      navigate('/')
       toast.success('Login Successful')
     } catch (err) {
       console.log(err)

@@ -16,7 +16,7 @@ const queryClient = new QueryClient()
       <RouterProvider router={Route} />
         </QueryClientProvider>
       
-      <Toaster position='top-right' reverseOrder={false} />
+      <Toaster position='top-center' reverseOrder={false} />
       </AuthProvider>
      
      

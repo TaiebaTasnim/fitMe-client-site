@@ -24,6 +24,9 @@ import Forum from "../Pages/PublicPage/Forum";
 import TrainerBookedPage from "../Pages/PrivatePage/TrainerBookedPage";
 import Payment from "../Pages/PrivatePage/Payment";
 import BookedTrainer from "../Pages/Member/BookedTrainer";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+
 
 
 const Route = createBrowserRouter([
@@ -59,7 +62,7 @@ const Route = createBrowserRouter([
             },
             {
                   path:"/trainerDetails/:trainerId",
-                  element:<TrainerDetails></TrainerDetails>,
+                  element:<PrivateRoute><TrainerDetails></TrainerDetails></PrivateRoute>,
                  
             },
             {
@@ -83,7 +86,7 @@ const Route = createBrowserRouter([
       },
       {
             path:"dashboard",
-            element:<Dashboard></Dashboard>,
+            element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             errorElement:<ErrorPage></ErrorPage>,
             children:[
                   {
@@ -92,7 +95,7 @@ const Route = createBrowserRouter([
                   },
                   {
                         path:'addClasses',
-                        element:<AddClassForm></AddClassForm>
+                        element:<AdminRoute><AddClassForm></AddClassForm></AdminRoute>
                   },
                   {
                         path:'subscribers',
