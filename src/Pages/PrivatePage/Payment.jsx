@@ -69,7 +69,7 @@ const Payment = () => {
                     </div>
           <div className="flex justify-between items-center">
             <p className="text-gray-600 font-medium">Package Name:</p>
-            <p className="text-gray-800 font-semibold">{data.name}</p>
+            <p className="text-gray-800 font-semibold">{data?.name}</p>
           </div>
           <div className="flex justify-between items-center">
             <p className="text-gray-600 font-medium">Price:</p>

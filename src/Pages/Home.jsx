@@ -5,6 +5,7 @@ import Features from "../Components/Home/Features";
 import NewsletterSection from "../Components/Home/NewsletterSection";
 import RecentForums from "../Components/Home/RecentForums";
 import TeamSection from "../Components/Home/TeamSection";
+import Testimonials from "./PublicPage/Testimonials";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
                   <FeaturedClasses></FeaturedClasses>
                   <TeamSection></TeamSection>
                   <RecentForums></RecentForums>
+                  <Testimonials></Testimonials>
                   <NewsletterSection></NewsletterSection>
                   
             </div>

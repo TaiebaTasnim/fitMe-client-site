@@ -26,6 +26,7 @@ import Payment from "../Pages/PrivatePage/Payment";
 import BookedTrainer from "../Pages/Member/BookedTrainer";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import MemberRoute from "./MemberRoute";
 
 
 
@@ -72,12 +73,12 @@ const Route = createBrowserRouter([
             },
             {
                   path:"/trainerBooked/:index/:id",
-                  element:<TrainerBookedPage></TrainerBookedPage>,
+                  element:<PrivateRoute><TrainerBookedPage></TrainerBookedPage></PrivateRoute>,
                  
             },
             {
                   path:"/payment/:index/:id/:pkgId",
-                  element:<Payment></Payment>,
+                  element:<PrivateRoute><Payment></Payment></PrivateRoute>,
                  
             },
 
@@ -91,7 +92,7 @@ const Route = createBrowserRouter([
             children:[
                   {
                         path:'beTrainer',
-                        element:<TrainerForm></TrainerForm>
+                        element:<MemberRoute><TrainerForm></TrainerForm></MemberRoute>
                   },
                   {
                         path:'addClasses',
@@ -99,35 +100,35 @@ const Route = createBrowserRouter([
                   },
                   {
                         path:'subscribers',
-                        element:<Subscribers></Subscribers>
+                        element:<AdminRoute><Subscribers></Subscribers></AdminRoute>
                   },
                   {
                         path:'profile',
-                        element:<ProfilePage></ProfilePage>
+                        element:<MemberRoute><ProfilePage></ProfilePage></MemberRoute>
                   },
                   {
                         path:'activityLog',
-                        element:<ActivityLog></ActivityLog>
+                        element:<MemberRoute><ActivityLog></ActivityLog></MemberRoute>
                   },
                   {
                         path:'appliedTrainers',
-                        element:<AppliedTrainers></AppliedTrainers>
+                        element:<AdminRoute><AppliedTrainers></AppliedTrainers></AdminRoute>
                   },
                   {
                         path:'appliedTrainerDetails/:email',
-                        element:<AppliedTrainerDetails></AppliedTrainerDetails>
+                        element:<AdminRoute><AppliedTrainerDetails></AppliedTrainerDetails></AdminRoute>
                   },
                   {
                         path:'verifiedTrainers',
-                        element:<VerifiedTrainers></VerifiedTrainers>
+                        element:<AdminRoute><VerifiedTrainers></VerifiedTrainers></AdminRoute>
                   },
                   {
                         path:'addForum',
-                        element:<AddNewForum></AddNewForum>
+                        element:<AdminRoute><AddNewForum></AddNewForum></AdminRoute>
                   },
                   {
                         path:'bookedTrainer/:email',
-                        element:<BookedTrainer></BookedTrainer>
+                        element:<MemberRoute><BookedTrainer></BookedTrainer></MemberRoute>
                   },
             ]
       }

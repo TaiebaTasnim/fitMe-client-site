@@ -7,8 +7,8 @@ import { auth } from '../Firebase/Firebase.config';
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-      const [user, setUser] = useState(null)
-      const [loading, setLoading] = useState(false)
+      const [user, setUser] = useState({})
+      const [loading, setLoading] = useState(true)
       const googleProvider = new GoogleAuthProvider()
       const createUser = (email, password) => {
             return createUserWithEmailAndPassword(auth, email, password);
@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
       useEffect(() => {
             const unSubscribe = onAuthStateChanged(auth, currentUser => {
                   if (currentUser) {
+                        console.log(currentUser)
 
                         setUser(currentUser)
                         setLoading(false)
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
             })
             return () => {
-                  unSubscribe()
+                 return unSubscribe()
             }
       }, [])
       const signout = () => {

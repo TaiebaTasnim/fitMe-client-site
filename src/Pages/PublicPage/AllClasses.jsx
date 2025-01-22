@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 
+
 const AllClasses = () => {
   const axiosPublic = useAxiosPublic();
 
@@ -31,10 +32,10 @@ const AllClasses = () => {
     //enabled: searchClicked, // Only enable the query if search button was clicked
   });
 
-  const handleSearch = () => {
-    //setSearchClicked(true); // Mark that the search button was clicked
-    setCurrentPage(1); // Reset to page 1 when a new search is performed
-  };
+//   const handleSearch = () => {
+//     //setSearchClicked(true); // Mark that the search button was clicked
+//     //setCurrentPage(1); // Reset to page 1 when a new search is performed
+//   };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -45,20 +46,23 @@ const AllClasses = () => {
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">All Classes</h1>
 
       {/* Search Bar and Button */}
-      <div className="mb-4 flex items-center">
+      <div className="mb-4 flex items-center justify-center">
         <input
           type="text"
           placeholder="Search by class name"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} // Update search query on typing
-          className="w-full p-2 border border-gray-300 rounded-md"
+          onChange={(e) => setSearchQuery(e.target.value)}
+         
+          //onClick={handleSearch} // Update search query on typing
+          className="w-[50%]  p-2 border border-gray-300 rounded-md"
         />
-        <button
-          onClick={handleSearch} // Only trigger search when button is clicked
+       
+        {/* <button
+          // Only trigger search when button is clicked
           className="ml-4 p-2 bg-blue-500 text-white rounded-md"
         >
           Search
-        </button>
+        </button> */}
       </div>
 
       {/* Classes List */}

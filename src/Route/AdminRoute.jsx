@@ -11,10 +11,10 @@ import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
    
-    const [role]=useRole()
+    const [role,isLoading]=useRole()
     //const location = useLocation();
 
-    if (loading) {
+    if (loading || isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
 

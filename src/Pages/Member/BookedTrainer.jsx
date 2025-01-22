@@ -1,40 +1,71 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import ReactStars from "react-rating-stars-component";
+import toast from "react-hot-toast";
 
 const BookedTrainer = () => {
-      const axiosSecure = useAxiosSecure();
-      const {user}=useContext(AuthContext)
-      
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+  console.log(user)
 
-      // Fetch trainer details using react-query
-      const { data: payments = [], isLoading, isError } = useQuery({
-        queryKey: ["payments",user?.email], // Unique key for this query
-        queryFn: async () => {
-          const response = await axiosSecure.get(`/payments/${user?.email}`); // Fetch from backend
-          console.log(response.data); // Log data for debugging
-          return response.data; // Return the trainers array
-        },
-        enabled: !!user?.email,
-      });
-    
-      if (isLoading) {
-        return <LoadingSpinner />;
-      }
-    
-      if (isError) {
-        return (
-          <p className="text-center text-red-500">
-            Error fetching trainer details. Please try again.
-          </p>
-        );
-      }
-      return (
-            <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+  const [selectedTrainer, setSelectedTrainer] = useState(null);
+  const [feedback, setFeedback] = useState("");
+  const [rating, setRating] = useState(0);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  // Fetch trainer details using react-query
+  const { data: payments = [], isLoading, isError } = useQuery({
+    queryKey: ["payments", user?.email],
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/payments/${user?.email}`);
+      return response.data;
+    },
+    enabled: !!user?.email,
+  });
+
+  const openModal = (trainer) => {
+    setSelectedTrainer(trainer);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedTrainer(null);
+    setFeedback("");
+    setRating(0);
+  };
+
+  const submitReview = async () => {
+    try {
+      const reviewData = {
+        trainerEmail: selectedTrainer.trainerEmail,
+        userName:user?.displayName,
+        image:user?.photoURL,
+        feedback,
+        rating,
+      };
+      await axiosSecure.post("/reviews", reviewData); // Send review data to the backend
+      toast("Review submited successfuly!")
+      closeModal();
+    } catch (error) {
+      console.error("Error submitting review:", error);
+    }
+  };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError) {
+    return <p className="text-center text-red-500">Error fetching trainer details. Please try again.</p>;
+  }
+
+  return (
+    <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Trainer Details</h1>
 
       {payments?.length > 0 ? (
@@ -59,16 +90,17 @@ const BookedTrainer = () => {
                   } hover:bg-gray-300 transition duration-300`}
                 >
                   <td className="px-4 py-2 text-center">{index + 1}</td>
-                  <td className="px-4 py-2 text-center">{payment.name}</td>
-                 
-                       
-                 <td  className="px-4 py-2 text-center">{payment.skills.join(', ')}</td>
-                  
-                  
-                  <td className="px-4 py-2 text-center">{payment.slotDate} : {payment.slotTime.start}- {payment.slotTime.end}</td>
+                  <td className="px-4 py-2 text-center">{payment.trainerEmail}</td>
+                  <td className="px-4 py-2 text-center">{payment.skills.join(", ")}</td>
+                  <td className="px-4 py-2 text-center">
+                    {payment.slotDate} : {payment.slotTime.start} - {payment.slotTime.end}
+                  </td>
                   <td className="px-4 py-2 text-center">${payment.price}</td>
                   <td className="px-4 py-2 text-center">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                      onClick={() => openModal(payment)}
+                    >
                       Review
                     </button>
                   </td>
@@ -80,9 +112,47 @@ const BookedTrainer = () => {
       ) : (
         <p className="text-center text-gray-700">No trainer details found.</p>
       )}
+
+      {/* Modal */}
+      {modalIsOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/3">
+            <h2 className="text-xl font-bold mb-4">Leave a Review</h2>
+            <textarea
+              className="w-full p-2 border rounded mb-4"
+              placeholder="Write your feedback..."
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+            />
+            <div className="mb-4">
+              <label className="block mb-2 font-semibold">Rating:</label>
+              <ReactStars
+                count={5}
+                size={30}
+                activeColor="#ffd700"
+                value={rating}
+                onChange={(newRating) => setRating(newRating)}
+              />
+            </div>
+            <div className="flex justify-end">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+                onClick={submitReview}
+              >
+                Submit
+              </button>
+              <button
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
-      );
+  );
 };
 
 export default BookedTrainer;
-

@@ -5,7 +5,7 @@ import { ComplexNavbar } from "../Components/Shared/Navber";
 
 const Root = () => {
       return (
-            <div>
+            <div id="root">
                   <ComplexNavbar></ComplexNavbar>
                   <div className="min-h-[calc(100vh-301px)]">
                   <Outlet ></Outlet>
