@@ -11,20 +11,20 @@ import toast from "react-hot-toast";
 
 const Dashboard = () => {
     const [role] = useRole()
-    const {user,signout}=useContext(AuthContext)
-    
-  const navigate=useNavigate()
+    const { user, signout } = useContext(AuthContext)
 
-  const handlesignout = () => {
-    signout()
-      .then(() => {
-        toast.success("Logged out successfully");
-        navigate("/login")
-      })
-      .catch((error) => {
-        toast.error(`Logout failed: ${error.message}`);
-      });
-  };
+    const navigate = useNavigate()
+
+    const handlesignout = () => {
+        signout()
+            .then(() => {
+                toast.success("Logged out successfully");
+                navigate("/login")
+            })
+            .catch((error) => {
+                toast.error(`Logout failed: ${error.message}`);
+            });
+    };
 
     return (
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
 
                         <li className="flex items-center gap-2" >
                             <FaLock></FaLock>
-                            <NavLink to="/order/contact"  onClick={handlesignout}>
+                            <NavLink to="/order/contact" onClick={handlesignout}>
 
                                 Log Out</NavLink>
                         </li>
@@ -150,7 +150,60 @@ const Dashboard = () => {
 
                     <li className="flex items-center gap-2" >
                         <FaLock></FaLock>
-                        <NavLink to="/order/contact"  onClick={handlesignout}>
+                        <NavLink to="/order/contact" onClick={handlesignout}>
+
+                            Log Out</NavLink>
+                    </li>
+
+
+
+
+                </ul></div>}
+                {role === 'trainer' && <div><ul className=" pl-4 space-y-5  ">
+
+
+                    <li className="flex items-center gap-2">
+                        <FaHome></FaHome>
+                        <NavLink to="/dashboard/manageSlots">
+
+                            Manage Slots</NavLink>
+
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <FaCalendar></FaCalendar>
+                        <NavLink to="/dashboard/addSlot">
+
+                            Add New Slot</NavLink>
+                    </li>
+                    
+                    <li className="flex items-center gap-2">
+                        <FaShoppingCart></FaShoppingCart>
+                        <NavLink to="/dashboard/addForumTrainer">
+
+                            Add New Forum </NavLink>
+                    </li>
+
+
+
+
+                    {/* shared nav links */}
+
+                    <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
+                    <li className="flex items-center gap-2">
+                        <FaHome></FaHome>
+                        <NavLink to="/">
+
+                            Home </NavLink>
+                    </li>
+
+
+
+
+
+
+                    <li className="flex items-center gap-2" >
+                        <FaLock></FaLock>
+                        <NavLink to="/order/contact" onClick={handlesignout}>
 
                             Log Out</NavLink>
                     </li>

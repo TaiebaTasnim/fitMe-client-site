@@ -12,6 +12,7 @@ const TrainerRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
    
     const [role,isLoading]=useRole()
+    console.log(role)
     //const location = useLocation();
 
     if (loading || isLoading) {

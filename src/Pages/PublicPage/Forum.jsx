@@ -100,7 +100,7 @@ const Forum = () => {
                         forum.createdBy.role==='admin'&& <div className="flex items-center gap-2"><MdAdminPanelSettings className="text-[#abc502]"></MdAdminPanelSettings>Admin</div>
                     }
                     {
-                        forum.createdBy.role==='trainer' && <div><SiTrainerroad></SiTrainerroad>Trainer</div>
+                        forum.createdBy.role==='trainer' && <div className="flex items-center gap-2"><SiTrainerroad></SiTrainerroad>Trainer</div>
                     }
 
                   </div>

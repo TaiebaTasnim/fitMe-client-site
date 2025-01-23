@@ -28,6 +28,10 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import MemberRoute from "./MemberRoute";
 import ForumDetails from "../Pages/PublicPage/ForumDetails";
+import TrainerRoute from "./TrainerRoute";
+import AddForum from "../Pages/Trainer/AddForum";
+import ManageSlots from "../Pages/Trainer/ManageSlots";
+import AddNewSlot from "../Pages/Trainer/AddNewSlot";
 
 
 
@@ -129,8 +133,20 @@ const Route = createBrowserRouter([
                         element:<AdminRoute><VerifiedTrainers></VerifiedTrainers></AdminRoute>
                   },
                   {
-                        path:'addForum',
+                        path:'addForumAdmin',
                         element:<AdminRoute><AddNewForum></AddNewForum></AdminRoute>
+                  },
+                  {
+                        path:'addForumTrainer',
+                        element:<TrainerRoute><AddForum></AddForum></TrainerRoute>
+                  },
+                  {
+                        path:'manageSlots',
+                        element:<TrainerRoute><ManageSlots></ManageSlots></TrainerRoute>
+                  },
+                  {
+                        path:'addSlot',
+                        element:<TrainerRoute><AddNewSlot></AddNewSlot></TrainerRoute>
                   },
                   {
                         path:'bookedTrainer/:email',
