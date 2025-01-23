@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 const BookedTrainer = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
 
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [feedback, setFeedback] = useState("");
@@ -26,6 +26,14 @@ const BookedTrainer = () => {
     },
     enabled: !!user?.email,
   });
+
+  const convertTo12HourFormat = (time) => {
+      const [hour, minute] = time.split(":");
+      let hourInt = parseInt(hour);
+      const suffix = hourInt >= 12 ? "PM" : "AM";
+      hourInt = hourInt % 12 || 12; // Convert 0-11 to 12-hour format
+      return `${hourInt}:${minute} ${suffix}`;
+    };
 
   const openModal = (trainer) => {
     setSelectedTrainer(trainer);
@@ -43,13 +51,13 @@ const BookedTrainer = () => {
     try {
       const reviewData = {
         trainerEmail: selectedTrainer.trainerEmail,
-        userName:user?.displayName,
-        image:user?.photoURL,
+        userName: user?.displayName,
+        image: user?.photoURL,
         feedback,
         rating,
       };
       await axiosSecure.post("/reviews", reviewData); // Send review data to the backend
-      toast("Review submited successfuly!")
+      toast("Review submitted successfully!");
       closeModal();
     } catch (error) {
       console.error("Error submitting review:", error);
@@ -85,15 +93,14 @@ const BookedTrainer = () => {
               {payments.map((payment, index) => (
                 <tr
                   key={payment._id}
-                  className={`${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                  } hover:bg-gray-300 transition duration-300`}
+                  className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"} hover:bg-gray-300 transition duration-300`}
                 >
                   <td className="px-4 py-2 text-center">{index + 1}</td>
                   <td className="px-4 py-2 text-center">{payment.trainerEmail}</td>
                   <td className="px-4 py-2 text-center">{payment.skills.join(", ")}</td>
                   <td className="px-4 py-2 text-center">
-                    {payment.slotDate} : {payment.slotTime.start} - {payment.slotTime.end}
+                    {payment.slotDate} :{convertTo12HourFormat(payment.slotTime.start)} -{" "}
+                    {convertTo12HourFormat(payment.slotTime.end)}
                   </td>
                   <td className="px-4 py-2 text-center">${payment.price}</td>
                   <td className="px-4 py-2 text-center">

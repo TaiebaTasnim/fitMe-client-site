@@ -27,6 +27,7 @@ import BookedTrainer from "../Pages/Member/BookedTrainer";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import MemberRoute from "./MemberRoute";
+import ForumDetails from "../Pages/PublicPage/ForumDetails";
 
 
 
@@ -69,6 +70,11 @@ const Route = createBrowserRouter([
             {
                   path:"/forum",
                   element:<Forum></Forum>,
+                 
+            },
+            {
+                  path:"/forumDetails/:forumId",
+                  element:<ForumDetails></ForumDetails>,
                  
             },
             {

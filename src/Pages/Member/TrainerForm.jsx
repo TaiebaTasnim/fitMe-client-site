@@ -4,8 +4,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
-import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import { imageUpload } from "../../api/utils";
+import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 
 export const TrainerForm = () => {
   const formRef = useRef(null);
@@ -18,6 +18,7 @@ export const TrainerForm = () => {
     email: user?.email || "",
     age: "",
     skills: [],
+    slot_name: "",
     available_days: [],
     available_time: { start: "", end: "" },
     years_of_experience: "",
@@ -27,14 +28,16 @@ export const TrainerForm = () => {
   });
 
   const daysOptions = [
-    { value: "Sun", label: "Sunday" },
-    { value: "Mon", label: "Monday" },
-    { value: "Tue", label: "Tuesday" },
-    { value: "Wed", label: "Wednesday" },
-    { value: "Thu", label: "Thursday" },
-    { value: "Fri", label: "Friday" },
-    { value: "Sat", label: "Saturday" },
+    { value: "Sunday", label: "Sunday" },
+    { value: "Monday", label: "Monday" },
+    { value: "Tuesday", label: "Tuesday" },
+    { value: "Wednesday", label: "Wednesday" },
+    { value: "Thursday", label: "Thursday" },
+    { value: "Friday", label: "Friday" },
+    { value: "Saturday", label: "Saturday" },
   ];
+
+  
 
   const mutation = useMutation({
     mutationFn: async (trainerData) => {
@@ -45,17 +48,18 @@ export const TrainerForm = () => {
       queryClient.invalidateQueries({ queryKey: ["trainers"] });
       toast.success("Trainer data saved successfully!");
       setFormData({
-            full_name: "",
-            email: user?.email || "",
-            age: "",
-            skills: [],
-            available_days: [],
-            available_time: { start: "", end: "" },
-            years_of_experience: "",
-            biography: "",
-            facebook_profile: "",
-            instagram_profile: "",
-          });
+        full_name: "",
+        email: user?.email || "",
+        age: "",
+        skills: [],
+        slot_name: "",
+        available_days: [],
+        available_time: { start: "", end: "" },
+        years_of_experience: "",
+        biography: "",
+        facebook_profile: "",
+        instagram_profile: "",
+      });
       if (formRef.current) {
         formRef.current.reset();
       }
@@ -65,39 +69,57 @@ export const TrainerForm = () => {
       toast.error("An error occurred while saving data.");
     },
   });
-
   const { data: skills = [], isLoading } = useQuery({
-    queryKey: ["skills"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/class-names");
-      return res.data;
-    },
-  });
-
-  if (isLoading) return <LoadingSpinner />;
+      queryKey: ["skills"],
+      queryFn: async () => {
+        const res = await axiosSecure.get("/class-names");
+        return res.data;
+      },
+    });
+  
+    if (isLoading) return <LoadingSpinner />;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSelectChange = (selected, name) => {
-    setFormData({ ...formData, [name]: selected.map((item) => item.value) });
+  const handleSelectChange = (selected) => {
+    setFormData({ ...formData, available_days: selected.map((day) => day.value) });
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     const imageFile = e.target.profile_image.files[0];
     let photoURL = "";
 
-    // Upload image to external service
+    // Upload profile image
     if (imageFile) {
       photoURL = await imageUpload(imageFile);
     }
+
+    // Generate slots array
+    const slots = formData.available_days.map((day) => ({
+      slot_name: formData.slot_name,
+      available_day: day,
+      available_time: { ...formData.available_time },
+    }));
+
+    // Prepare final trainer data structure
     const trainerData = {
-      ...formData,
+      full_name: formData.full_name,
+      email: formData.email,
+      age: formData.age,
+      skills: formData.skills,
+      slots, // Array of slots
+      years_of_experience: formData.years_of_experience,
+      biography: formData.biography,
+      facebook_profile: formData.facebook_profile,
+      instagram_profile: formData.instagram_profile,
       profile_image: photoURL,
     };
+
     mutation.mutate(trainerData);
   };
 
@@ -114,11 +136,8 @@ export const TrainerForm = () => {
         <div className="grid grid-cols-2 gap-6">
           {/* Full Name */}
           <div>
-            <label
-              htmlFor="full_name"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
-              Name*
+            <label htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">
+              Full Name*
             </label>
             <input
               type="text"
@@ -127,31 +146,26 @@ export const TrainerForm = () => {
               value={formData.full_name}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+              className="w-full px-4 py-2 border rounded-lg"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-1">
               Email*
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              
               value={formData.email}
               readOnly
-              className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none"
+              className="w-full px-4 py-2 border rounded-lg bg-gray-100"
             />
           </div>
-
-          {/* Age */}
-          <div>
+            {/* Age */}
+            <div>
             <label
               htmlFor="age"
               className="block text-sm font-medium text-gray-600 mb-1"
@@ -168,7 +182,7 @@ export const TrainerForm = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
             />
           </div>
-
+          
           {/* Profile Image */}
           <div>
             <label
@@ -186,9 +200,7 @@ export const TrainerForm = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
             />
           </div>
-
-         
-          {/* Skills */}
+           {/* Skills */}
 <div className="col-span-2">
   <label
     className="block text-sm font-medium text-gray-600 mb-2"
@@ -229,89 +241,76 @@ export const TrainerForm = () => {
 </div>
 
 
-          {/* Available Days */}
+          {/* Slot Name */}
           <div>
-            <label
-              className="block text-sm font-medium text-gray-600 mb-1"
-              htmlFor="available_days"
-            >
+            <label htmlFor="slot_name" className="block text-sm font-medium text-gray-600 mb-1">
+              Slot Name*
+            </label>
+            <input
+              type="text"
+              id="slot_name"
+              name="slot_name"
+              value={formData.slot_name}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
+
+          {/* Available Days */}
+          <div className="col-span-2">
+            <label htmlFor="available_days" className="block text-sm font-medium text-gray-600 mb-1">
               Available Days*
             </label>
             <Select
-            required
               isMulti
               options={daysOptions}
-              onChange={(selected) =>
-                handleSelectChange(selected, "available_days")
-              }
+              onChange={handleSelectChange}
+              required
             />
           </div>
 
           {/* Available Time */}
           <div>
-            <label
-              className="block text-sm font-medium text-gray-600 mb-1"
-              htmlFor="available_time"
-            >
-              Available Time*
+            <label htmlFor="start_time" className="block text-sm font-medium text-gray-600 mb-1">
+              Start Time*
             </label>
-            <div className="flex items-center gap-4">
-              <div>
-                <label
-                  htmlFor="start_time"
-                  className="block text-xs text-gray-500 mb-1"
-                >
-                  Start
-                </label>
-                <input
-                
-                  type="time"
-                  id="start_time"
-                  name="start"
-                  value={formData.available_time.start}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      available_time: {
-                        ...formData.available_time,
-                        start: e.target.value,
-                      },
-                    })
-                  }
-                  required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="end_time"
-                  className="block text-xs text-gray-500 mb-1"
-                >
-                  End
-                </label>
-                <input
-                  type="time"
-                  id="end_time"
-                  name="end"
-                  value={formData.available_time.end}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      available_time: {
-                        ...formData.available_time,
-                        end: e.target.value,
-                      },
-                    })
-                  }
-                  required
-                  className="w-full px-4 py-2 border rounded-lg  focus:outline-none"
-                />
-              </div>
-            </div>
+            <input
+              type="time"
+              id="start_time"
+              name="start"
+              value={formData.available_time.start}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  available_time: { ...formData.available_time, start: e.target.value },
+                })
+              }
+              required
+              className="w-full px-4 py-2 border rounded-lg"
+            />
           </div>
-
-          {/* Years of Experience */}
           <div>
+            <label htmlFor="end_time" className="block text-sm font-medium text-gray-600 mb-1">
+              End Time*
+            </label>
+            <input
+              type="time"
+              id="end_time"
+              name="end"
+              value={formData.available_time.end}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  available_time: { ...formData.available_time, end: e.target.value },
+                })
+              }
+              required
+              className="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
+            {/* Years of Experience */}
+            <div>
             <label
               htmlFor="years_of_experience"
               className="block text-sm font-medium text-gray-600 mb-1"
@@ -328,13 +327,10 @@ export const TrainerForm = () => {
               className="w-full focus:ring-[#abc502] px-4 py-2 border rounded-lg focus:outline-none"
             />
           </div>
-          {/* Facebook Profile */}
-          <div>
-            <label
-              htmlFor="facebook_profile"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
-              Facebook Profile Link
+           {/* Facebook Profile */}
+           <div>
+            <label htmlFor="facebook_profile" className="block text-sm font-medium text-gray-600 mb-1">
+              Facebook Profile
             </label>
             <input
               type="url"
@@ -342,17 +338,14 @@ export const TrainerForm = () => {
               name="facebook_profile"
               value={formData.facebook_profile}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+              className="w-full px-4 py-2 border rounded-lg"
             />
           </div>
 
           {/* Instagram Profile */}
           <div>
-            <label
-              htmlFor="instagram_profile"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
-              Instagram Profile Link
+            <label htmlFor="instagram_profile" className="block text-sm font-medium text-gray-600 mb-1">
+              Instagram Profile
             </label>
             <input
               type="url"
@@ -360,17 +353,15 @@ export const TrainerForm = () => {
               name="instagram_profile"
               value={formData.instagram_profile}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+              className="w-full px-4 py-2 border rounded-lg"
             />
           </div>
+        </div>
 
           {/* Biography */}
           <div className="col-span-2">
-            <label
-              htmlFor="biography"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
-              Biography
+            <label htmlFor="biography" className="block text-sm font-medium text-gray-600 mb-1">
+              Biography*
             </label>
             <textarea
               id="biography"
@@ -379,19 +370,20 @@ export const TrainerForm = () => {
               onChange={handleInputChange}
               rows="4"
               required
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+              className="w-full px-4 py-2 border rounded-lg"
             ></textarea>
           </div>
-        </div>
+
+         
 
         {/* Submit Button */}
         <div className="mt-6 text-right">
           <button
             type="submit"
             disabled={mutation.isLoading}
-            className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg hover:bg-black hover:text-white focus:ring-[#abc502]  focus:outline-none"
+            className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg"
           >
-            {mutation.isLoading ? "Saving..." : "Apply"}
+            {mutation.isLoading ? "Saving..." : "Submit"}
           </button>
         </div>
       </form>

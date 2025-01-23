@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
@@ -10,13 +9,23 @@ const AllTrainers = () => {
 
   // Fetch trainers with "verified" status
   const { data: trainers = [], isLoading } = useQuery({
-      queryKey: ["verifiedTrainers"],
-      queryFn: async () => {
-        const res = await axiosPublic.get("/trainers/verified");
-        console.log(res.data)
-        return res.data;
-      },
-    });
+    queryKey: ["verifiedTrainers"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/trainers/verified");
+      console.log(res.data);
+      return res.data;
+    },
+  });
+
+  const convertTo12HourFormat = (time) => {
+      const [hour, minute] = time.split(":");
+      let hourInt = parseInt(hour);
+      const suffix = hourInt >= 12 ? "PM" : "AM";
+      hourInt = hourInt % 12 || 12; // Convert 0-11 to 12-hour format
+      return `${hourInt}:${minute} ${suffix}`;
+    };
+    
+
   if (isLoading) return <LoadingSpinner />;
 
   return (
@@ -28,7 +37,8 @@ const AllTrainers = () => {
         {trainers.map((trainer) => (
           <div
             key={trainer._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden">
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+          >
             <img
               src={trainer.profile_image}
               alt={trainer.full_name}
@@ -42,20 +52,33 @@ const AllTrainers = () => {
               <p className="text-gray-600 mb-2">
                 Experience: {trainer.years_of_experience} years
               </p>
-              <p className="text-gray-600 mb-2">Skills: {trainer.skills.join(", ")}</p>
               <p className="text-gray-600 mb-2">
-                Available Days: {trainer.available_days.join(", ")}
+                Skills: {trainer.skills.join(", ")}
               </p>
-              <p className="text-gray-600 mb-4">
-                Available Time: {trainer.available_time.start} - {trainer.available_time.end}
-              </p>
+              <div className="mb-4">
+                <p className="text-gray-600 mb-2">Available Slots:</p>
+                {trainer.slots.map((slot, index) => (
+                  <div key={index} className="text-gray-600 mb-2">
+                    <strong>{slot.slot_name}</strong>
+                    <div>
+                      <strong>Days: </strong>
+                      {slot.available_day}
+                    </div>
+                    <div>
+        <strong>Time: </strong>
+        {convertTo12HourFormat(slot.available_time.start)} - {convertTo12HourFormat(slot.available_time.end)}
+      </div>
+                  </div>
+                ))}
+              </div>
               <div className="flex gap-4">
                 {trainer.facebook_profile && (
                   <a
                     href={trainer.facebook_profile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800">
+                    className="text-blue-600 hover:text-blue-800"
+                  >
                     <FaFacebook size={24} />
                   </a>
                 )}
@@ -64,29 +87,26 @@ const AllTrainers = () => {
                     href={trainer.instagram_profile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-pink-500 hover:text-pink-700">
+                    className="text-pink-500 hover:text-pink-700"
+                  >
                     <FaInstagram size={24} />
                   </a>
                 )}
               </div>
             </div>
             <div className="pb-6 pr-6 text-right">
-                  <Link to={`/trainerDetails/${trainer._id}`}>
-                  <button
-             type="submit"
-             
-             className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg hover:bg-black hover:text-white focus:ring-[#abc502]  focus:outline-none"
-           >
-             Know More
-           </button>
-                  </Link>
-           
-         </div>
+              <Link to={`/trainerDetails/${trainer._id}`}>
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg hover:bg-black hover:text-white focus:ring-[#abc502] focus:outline-none"
+                >
+                  Know More
+                </button>
+              </Link>
+            </div>
           </div>
-           
         ))}
       </div>
-     
     </div>
   );
 };
