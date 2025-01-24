@@ -6,11 +6,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import ReactStars from "react-rating-stars-component";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 const BookedTrainer = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  console.log(user);
+  const {email}=useParams()
+  //console.log(user.email);
 
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [feedback, setFeedback] = useState("");
@@ -21,7 +23,8 @@ const BookedTrainer = () => {
   const { data: payments = [], isLoading, isError } = useQuery({
     queryKey: ["payments", user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/payments/${user?.email}`);
+      const response = await axiosSecure.get(`/payments/${email}`);
+      console.log(response)
       return response.data;
     },
     enabled: !!user?.email,

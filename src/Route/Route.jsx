@@ -155,7 +155,7 @@ const Route = createBrowserRouter([
                   },
                   {
                         path:'bookedTrainer/:email',
-                        element:<MemberRoute><BookedTrainer></BookedTrainer></MemberRoute>
+                        element:<BookedTrainer></BookedTrainer>
                   },
             ]
       }
