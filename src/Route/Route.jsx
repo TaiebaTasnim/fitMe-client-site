@@ -32,6 +32,7 @@ import TrainerRoute from "./TrainerRoute";
 import AddForum from "../Pages/Trainer/AddForum";
 import ManageSlots from "../Pages/Trainer/ManageSlots";
 import AddNewSlot from "../Pages/Trainer/AddNewSlot";
+import Balance from "../Pages/Admin/Balance";
 
 
 
@@ -135,6 +136,10 @@ const Route = createBrowserRouter([
                   {
                         path:'addForumAdmin',
                         element:<AdminRoute><AddNewForum></AddNewForum></AdminRoute>
+                  },
+                  {
+                        path:'balance',
+                        element:<AdminRoute><Balance></Balance></AdminRoute>
                   },
                   {
                         path:'addForumTrainer',

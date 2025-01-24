@@ -68,7 +68,7 @@ const AddNewSlot = () => {
   };
 
   const handleClassSelectChange = (selectedOption) => {
-     
+     console.log(selectedOption)
       setFormData({
         ...formData,
         class_name: selectedOption ? selectedOption.value : "", 
@@ -77,6 +77,8 @@ const AddNewSlot = () => {
     
 
     const newSkills = formData.class_name ? [...trainerData.skills, formData.class_name] : trainerData.skills;
+
+    console.log(newSkills)
 
   // Handle form submit
   const handleSubmit = (e) => {
@@ -93,6 +95,7 @@ const slots = formData.days.map((day) => ({
             start: formData.available_time_start,
             end: formData.available_time_end,
           },
+          class_name:formData.class_name
     }));
 
 
@@ -201,7 +204,7 @@ const slots = formData.days.map((day) => ({
           </div>
 
           <div className="mt-4">
-            <label>Class Name</label>
+            <label>Skills</label>
             <Select
               options={formattedClasses}
               onChange={handleClassSelectChange} 

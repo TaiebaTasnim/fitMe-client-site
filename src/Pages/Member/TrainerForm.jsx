@@ -104,6 +104,7 @@ export const TrainerForm = () => {
       slot_name: formData.slot_name,
       available_day: day,
       available_time: { ...formData.available_time },
+      class_name:formData.skills
     }));
 
     // Prepare final trainer data structure

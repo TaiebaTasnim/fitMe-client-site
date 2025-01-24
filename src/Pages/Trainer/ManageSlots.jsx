@@ -15,6 +15,7 @@ const ManageSlots = () => {
             queryKey: ["manageSlots", user?.email], // queryKey with email for uniqueness
             queryFn: async () => {
               const response = await axiosSecure.get(`/manage-slots?email=${user?.email}`);
+              console.log(response.data)
               return response.data.slots; // Assuming response contains the 'slots' array
             },
             enabled: !!user?.email, // The query runs only when email is available
@@ -67,7 +68,7 @@ const ManageSlots = () => {
             <th className="px-4 py-2">Day</th>
             <th className="px-4 py-2">Slot Name</th>
             <th className="px-4 py-2">Time</th>
-            {/* <th className="px-4 py-2">Skills</th> */}
+            <th className="px-4 py-2">Skills</th>
             <th className="px-4 py-2">Status</th>
             <th className="px-4 py-2">Action</th>
           </tr>
@@ -83,7 +84,8 @@ const ManageSlots = () => {
               <td className="px-4 py-2">
                 {slot.available_time.start} - {slot.available_time.end}
               </td>
-              {/* <td className="px-4 py-2">{slot.trainerData.skills?.join(", ")}</td> */}
+             
+              <td className="px-4 py-2">{slot.class_name}</td>
               <td className="px-4 py-2">{slot.status}</td>
               <td className="px-4 py-2 text-center">
                 {slot.status === "available" && (
