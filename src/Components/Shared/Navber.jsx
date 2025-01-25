@@ -19,6 +19,7 @@ import {
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import useRole from "../../hooks/useRole";
 
 
 export const ComplexNavbar = () => {
@@ -26,6 +27,7 @@ export const ComplexNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { user, signout } = useContext(AuthContext);
+  const [role]=useRole()
   const navigate=useNavigate()
 
   const handlesignout = () => {
@@ -135,14 +137,38 @@ export const ComplexNavbar = () => {
                   </MenuHandler>
                   <MenuList>
                   <MenuItem>
-                     <Link to="dashboard"><Button
+                  {role==="admin" && <Link to="dashboard/balance"><Button
                         
                         variant="text"
                         className="w-full text-left"
                       >
                        Dashboard
                         
-                      </Button></Link>
+                      </Button></Link>}
+                      {role==="member" && <Link to={`/dashboard/profile/${user?.email}`}><Button
+                        
+                        variant="text"
+                        className="w-full text-left"
+                      >
+                       Dashboard
+                        
+                      </Button></Link>}
+                      {role==="trainer" && <Link to="/dashboard/manageSlots"><Button
+                        
+                        variant="text"
+                        className="w-full text-left"
+                      >
+                       Dashboard
+                        
+                      </Button></Link>}
+                     {/* <Link to="dashboard"><Button
+                        
+                        variant="text"
+                        className="w-full text-left"
+                      >
+                       Dashboard
+                        
+                      </Button></Link> */}
                       
                     </MenuItem>
                     {/* {profileMenuItems.map(({ label, icon }, key) => (

@@ -4,6 +4,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "animate.css";
+import { Link } from "react-router-dom";
 
 const  Banner=()=> {
   const slides = [
@@ -12,21 +13,21 @@ const  Banner=()=> {
       title: "AWESOME FITNESS",
       description: "GET FIT IN LESS THAN 2 WEEKS",
       subtext: "We provide high-quality fitness programs tailored for you.",
-      buttonText: "CONTACT NOW",
+      buttonText: "Explore More",
     },
     {
       image: "https://i.ibb.co/4mwz9mR/gym3.jpg",
       title: "BUILD YOUR STRENGTH",
       description: "ACHIEVE YOUR GOALS",
       subtext: "Join our expert trainers and achieve greatness.",
-      buttonText: "CONTACT NOW",
+      buttonText: "Explore More",
     },
     {
       image: "https://i.ibb.co/Q9J6jSJ/gym1.jpg",
       title: "TRANSFORM YOUR BODY",
       description: "PUSH YOUR LIMITS",
       subtext: "Get ready for a new chapter of fitness excellence.",
-      buttonText: "CONTACT NOW",
+      buttonText: "Explore More",
     },
   ];
 
@@ -62,12 +63,14 @@ const  Banner=()=> {
               </p>
 
               {/* Button */}
-              <a
-                href="/contact"
-                className="px-6 py-3 bg-[#abc502] text-black font-medium rounded-lg shadow-lg hover:bg-[#9ab002] transition animate__animated animate__fadeInUp  ml-10"
-              >
-                {slide.buttonText}
-              </a>
+              <Link to="/allClasses" className="px-6 py-3 bg-[#abc502] text-black font-medium rounded-lg shadow-lg hover:bg-[#9ab002] transition animate__animated animate__fadeInUp  ml-10">
+              {slide.buttonText}
+              </Link>
+                
+                
+              
+               
+              
             </div>
           </SwiperSlide>
         ))}

@@ -291,6 +291,25 @@ const Dashboard = () => {
                             Applied Trainers 
                         </NavLink>
                     </li>
+                    <li className="flex items-center gap-2">
+                        <FaShoppingCart></FaShoppingCart>
+                        <NavLink to="/dashboard/balance" onClick={handleNavLinkClick}>
+
+                            Balance </NavLink>
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <FaShoppingCart></FaShoppingCart>
+                         <NavLink to="/dashboard/addClasses" onClick={handleNavLinkClick}>
+
+                            Add New Class </NavLink>
+                    </li>
+                    <li className="flex items-center gap-2">
+                         <FaShoppingCart></FaShoppingCart>
+                        
+                         <NavLink to="/dashboard/addForumAdmin" onClick={handleNavLinkClick}>
+
+                             Add New Forum </NavLink>
+                     </li>
                     <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
                     <li className="flex items-center gap-2">
                         <FaHome />
@@ -318,6 +337,12 @@ const Dashboard = () => {
                             Add New Slot
                         </NavLink>
                     </li>
+                    <li className="flex items-center gap-2">
+                         <FaShoppingCart></FaShoppingCart>
+                         <NavLink to="/dashboard/addForumTrainer" onClick={handleNavLinkClick}>
+
+                             Add New Forum </NavLink>
+                     </li>
                     <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
                     <li className="flex items-center gap-2">
                         <FaHome />

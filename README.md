@@ -1,8 +1,41 @@
-# React + Vite
+# FitMe - Your Personal Fitness Companion 💪
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://fit-me-b5e4a.web.app](https://fit-me-b5e4a.web.app)
 
-Currently, two official plugins are available:
+**Admin Credentials:**  
+- **Username:** admin@gmail.com  
+- **Password:** Aa12345  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 🚀 Features of FitMe
+
+1. **User Dashboard** – Track workout activity logs and manage trainer bookings with ease.
+2. **Trainer Management** – Trainers can manage their available slots and see booked sessions.
+3. **Admin Control Panel** – Admins can add, remove, and manage trainers and users.
+4. **Role-Based Access** – Secure authentication with different roles (Admin, Trainer, Member).
+5. **Slot Booking System** – Users can book training slots based on trainer availability.
+6. **Payment Integration** – Secure online payments using Stripe.
+7. **Newsletter Subscription** – Stay updated with the latest fitness trends via email.
+8. **Profile Management** – Users can update their personal profiles and fitness goals.
+9. **Responsive Design** – Fully optimized for mobile, tablet, and desktop screens.
+10. **Secure Authentication** – Firebase authentication with JWT security.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend:**  
+  - React.js (React Router, Context API)  
+  - Tailwind CSS  
+  - Axios (API requests)  
+  - React Tanstack Query  
+
+- **Backend:**  
+  - Node.js with Express.js  
+  - MongoDB (Database)  
+  - JWT Authentication  
+  - Stripe Payments  
+
+---
+
