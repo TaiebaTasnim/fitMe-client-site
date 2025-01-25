@@ -44,7 +44,7 @@ const Dashboard = () => {
                         </li>
                         <li className="flex items-center gap-2">
                             <FaCalendar></FaCalendar>
-                            <NavLink to="/dashboard/profile">
+                            <NavLink to={`/dashboard/profile/${user?.email}`}>
 
                                 My Profile</NavLink>
                         </li>
@@ -125,7 +125,8 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaShoppingCart></FaShoppingCart>
-                        <NavLink to="/dashboard/addForum">
+                        
+                        <NavLink to="/dashboard/addForumAdmin">
 
                             Add New Forum </NavLink>
                     </li>

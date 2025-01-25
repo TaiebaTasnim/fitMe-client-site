@@ -32,6 +32,7 @@ const Payment = () => {
       return res.data;
     }
   });
+ 
   const convertTo12HourFormat = (time) => {
       const [hour, minute] = time.split(":");
       let hourInt = parseInt(hour);
@@ -45,6 +46,8 @@ const Payment = () => {
 
   // Accessing the selected slot
   const selectedSlot = trainer.slots[index];
+  const classNames=selectedSlot.class_name
+  const skills = Array.isArray(classNames) ? classNames : [classNames];
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10">
@@ -72,7 +75,7 @@ const Payment = () => {
           <div className="mt-6">
             <h3 className="text-lg font-bold text-gray-700">Classes</h3>
             <div className="flex flex-wrap gap-2 mt-2">
-              {trainer.skills.map((skill, index) => (
+              {skills.map((skill, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-[#abc502] text-black rounded-full text-sm font-medium shadow-md"

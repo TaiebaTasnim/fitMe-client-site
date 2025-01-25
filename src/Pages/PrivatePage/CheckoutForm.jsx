@@ -116,7 +116,7 @@ const CheckoutForm = ({pkgId,trainer,index}) => {
     
         }
     
-      return (
+      return ( 
             <div>
                   <form onSubmit={handleSubmit} >
             <CardElement

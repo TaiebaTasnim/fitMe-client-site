@@ -1,17 +1,18 @@
 import { Link, useParams } from "react-router-dom";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+//import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const TrainerDetails = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { trainerId } = useParams();
 
   const { data: trainer, isLoading, isError, error } = useQuery({
     queryKey: ["trainer", trainerId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/trainers/${trainerId}`);
+      const res = await axiosPublic.get(`/trainers/${trainerId}`);
       return res.data;
     },
   });

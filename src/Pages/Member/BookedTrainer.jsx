@@ -100,7 +100,7 @@ const BookedTrainer = () => {
                 >
                   <td className="px-4 py-2 text-center">{index + 1}</td>
                   <td className="px-4 py-2 text-center">{payment.trainerEmail}</td>
-                  <td className="px-4 py-2 text-center">{payment.skills.join(", ")}</td>
+                  <td className="px-4 py-2 text-center">{payment.skills}</td>
                   <td className="px-4 py-2 text-center">
                     {payment.slotDate} :{convertTo12HourFormat(payment.slotTime.start)} -{" "}
                     {convertTo12HourFormat(payment.slotTime.end)}

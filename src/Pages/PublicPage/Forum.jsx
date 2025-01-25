@@ -7,6 +7,7 @@ import { SiTrainerroad } from "react-icons/si";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 
@@ -15,6 +16,7 @@ import toast from "react-hot-toast";
 const Forum = () => {
       const {user}=useContext(AuthContext)
       const axiosPublic=useAxiosPublic()
+      const axiosSecure=useAxiosSecure()
       const [votedForums, setVotedForums] = useState({}); 
       const { data: forums = [], isLoading, isError, error,refetch } = useQuery({
             queryKey: ["forums"], 
@@ -32,7 +34,7 @@ const Forum = () => {
           const handleVote = async (forumId, action) => {
            
                   try {
-                        const response = await axiosPublic.patch(`/forums/vote`, {
+                        const response = await axiosSecure.patch(`/forums/vote`, {
                           forumId,
                           action
                         });

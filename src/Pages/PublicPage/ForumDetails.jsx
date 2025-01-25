@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+//import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const ForumDetails = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { forumId } = useParams(); // Get forum ID from URL parameters
   console.log(forumId);
 
@@ -12,7 +13,7 @@ const ForumDetails = () => {
   const { data: forum=[], isLoading, isError, error } = useQuery({
     queryKey: ["forum", forumId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/forums1/${forumId}`);
+      const res = await axiosPublic.get(`/forums1/${forumId}`);
       return res.data;
     },
   });

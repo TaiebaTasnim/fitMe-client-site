@@ -83,7 +83,11 @@ const AllClasses = () => {
                   <h2 className="text-xl font-bold text-gray-800 mb-2">{classItem.class_name}</h2>
                   <p className="text-gray-700 text-sm">Booking: {classItem.bookingCount}</p>
                 </div>
-                <p className="text-gray-600 mb-4">{classItem.class_details}</p>
+                <p className="text-gray-600 mb-4">
+                {classItem.class_details.length > 100
+                    ? `${classItem.class_details.substring(0, 100)}...`
+                    : classItem.class_details}
+                  </p>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-700 mb-2">Trainers who took this class</h3>
                   <div className="flex items-center space-x-3">

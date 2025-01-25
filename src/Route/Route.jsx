@@ -33,6 +33,7 @@ import AddForum from "../Pages/Trainer/AddForum";
 import ManageSlots from "../Pages/Trainer/ManageSlots";
 import AddNewSlot from "../Pages/Trainer/AddNewSlot";
 import Balance from "../Pages/Admin/Balance";
+import BookedSlotDetails from "../Pages/Trainer/BookedSlotDetails";
 
 
 
@@ -69,7 +70,7 @@ const Route = createBrowserRouter([
             },
             {
                   path:"/trainerDetails/:trainerId",
-                  element:<PrivateRoute><TrainerDetails></TrainerDetails></PrivateRoute>,
+                  element:<TrainerDetails></TrainerDetails>,
                  
             },
             {
@@ -114,7 +115,7 @@ const Route = createBrowserRouter([
                         element:<AdminRoute><Subscribers></Subscribers></AdminRoute>
                   },
                   {
-                        path:'profile',
+                        path:'profile/:email',
                         element:<MemberRoute><ProfilePage></ProfilePage></MemberRoute>
                   },
                   {
@@ -154,8 +155,12 @@ const Route = createBrowserRouter([
                         element:<TrainerRoute><AddNewSlot></AddNewSlot></TrainerRoute>
                   },
                   {
+                        path:'bookedSlotDetails/:email',
+                        element:<TrainerRoute><BookedSlotDetails></BookedSlotDetails></TrainerRoute>
+                  },
+                  {
                         path:'bookedTrainer/:email',
-                        element:<BookedTrainer></BookedTrainer>
+                        element:<MemberRoute><BookedTrainer></BookedTrainer></MemberRoute>
                   },
             ]
       }

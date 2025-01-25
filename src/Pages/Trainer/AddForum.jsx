@@ -12,7 +12,7 @@ const AddForum = () => {
 
   const addForumMutation = useMutation({
     mutationFn: async (forumData) => {
-      const response = await axiosSecure.post("/forums", forumData);
+      const response = await axiosSecure.post("/forums1", forumData);
       return response.data;
     },
     onSuccess: () => {

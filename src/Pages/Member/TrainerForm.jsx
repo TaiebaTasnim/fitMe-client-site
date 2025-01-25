@@ -46,7 +46,7 @@ export const TrainerForm = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["trainers"] });
-      toast.success("Trainer data saved successfully!");
+      toast.success("Trainer request saved successfully!");
       setFormData({
         full_name: "",
         email: user?.email || "",

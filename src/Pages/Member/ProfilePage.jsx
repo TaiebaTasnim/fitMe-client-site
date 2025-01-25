@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import {  useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -7,6 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../api/utils";
+import { useParams } from "react-router-dom";
 
 
 
@@ -14,19 +15,19 @@ import { imageUpload } from "../../api/utils";
 
 
 const ProfilePage = () => {
-  const { user } = useContext(AuthContext); // Get the current Firebase user object
-  //const queryClient = useQueryClient();
+  const { user } = useContext(AuthContext);
+   const {email}=useParams()
   const axiosSecure=useAxiosSecure()
   
 
   const { data: userData={}, isLoading, isError, error,refetch } = useQuery({
-    queryKey: ["user", user?.email],
+    queryKey: ["user", email],
     queryFn:async () => {
-      const response = await axiosSecure.get(`/users/${user?.email}`);
+      const response = await axiosSecure.get(`/users/${email}`);
       console.log(response.data)
       return response.data;
     },
-    enabled: !!user?.email, // Only run if email is available
+    enabled: !!email, // Only run if email is available
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,7 +47,7 @@ const ProfilePage = () => {
     };
 
     try {
-      const response = await axiosSecure.put(`/users/${user?.email}`, updatedUser);
+      const response = await axiosSecure.put(`/users/${email}`, updatedUser);
       console.log(response.data)
       toast.success("Profile updated successfully!");
       refetch()

@@ -6,10 +6,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+//import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AddNewSlot = () => {
       const {user}=useContext(AuthContext)
       const axiosSecure=useAxiosSecure()
+     // const axiosPublic=useAxiosPublic()
   
  
   const [formData, setFormData] = useState({
@@ -31,10 +33,17 @@ const AddNewSlot = () => {
       { value: "Sunday", label: "Sunday" },
     ];
 
-  const { data: trainerData={}, isLoading, isError, error, refetch } = useQuery({
+//   const { data: trainerData={}, isLoading, isError, error, refetch } = useQuery({
+//       queryKey: ["trainerData", user?.email],
+//       queryFn: async () => {
+//         const response = await axiosSecure.get(`/trainers3/${user?.email}`);
+//         return response.data;
+//       },
+//     });
+    const { data: trainerData={}, isLoading, isError, error, refetch } = useQuery({
       queryKey: ["trainerData", user?.email],
       queryFn: async () => {
-        const response = await axiosSecure.get(`/trainers3/${user?.email}`);
+        const response = await axiosSecure.get(`/trainers5/${user?.email}`);
         return response.data;
       },
     });

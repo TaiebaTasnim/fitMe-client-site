@@ -30,6 +30,9 @@ const TrainerBookedPage = () => {
   if (isError) return <p>Error: {error.message}</p>;
 
   const slot = trainer.slots[index];
+  const classNames=slot.class_name
+  const skills = Array.isArray(classNames) ? classNames : [classNames];
+
 
   return (
     <div className="container mx-auto w-[90%]">
@@ -49,9 +52,9 @@ const TrainerBookedPage = () => {
               {convertTo12HourFormat(slot.available_time.end)}
             </p>
             <div className="mt-6">
-              <h3 className="text-lg font-bold text-gray-700">Skills</h3>
+              <h3 className="text-lg font-bold text-gray-700">Classes</h3>
               <div className="flex flex-wrap gap-2 mt-2">
-                {trainer.skills.map((skill, index) => (
+                {skills.map((skill, index) => (
                   <span
                     key={index}
                     className="px-3 py-1 bg-[#abc502] text-black rounded-full text-sm font-medium shadow-md"

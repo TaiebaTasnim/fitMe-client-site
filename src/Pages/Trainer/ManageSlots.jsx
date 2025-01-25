@@ -1,11 +1,12 @@
 import  { useContext} from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { FaTrash } from "react-icons/fa"; // You can use any delete icon you prefer
+import { FaEye, FaTrash } from "react-icons/fa"; // You can use any delete icon you prefer
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 //import Swal from "sweetalert2";
 
 const ManageSlots = () => {
@@ -20,6 +21,14 @@ const ManageSlots = () => {
             },
             enabled: !!user?.email, // The query runs only when email is available
           });
+
+          const convertTo12HourFormat = (time) => {
+            const [hour, minute] = time.split(":");
+            let hourInt = parseInt(hour);
+            const suffix = hourInt >= 12 ? "PM" : "AM";
+            hourInt = hourInt % 12 || 12; // Convert 0-11 to 12-hour format
+            return `${hourInt}:${minute} ${suffix}`;
+          };
 
   const handleDelete = (slotIndex,trainerEmail) => {
       //console.log(slotIndex)
@@ -82,20 +91,33 @@ const ManageSlots = () => {
               <td className="px-4 py-2">{slot.available_day}</td>
               <td className="px-4 py-2">{slot.slot_name}</td>
               <td className="px-4 py-2">
-                {slot.available_time.start} - {slot.available_time.end}
+              {convertTo12HourFormat(slot.available_time.start)} -{" "}
+              {convertTo12HourFormat(slot.available_time.end)}
               </td>
              
               <td className="px-4 py-2">{slot.class_name}</td>
               <td className="px-4 py-2">{slot.status}</td>
               <td className="px-4 py-2 text-center">
-                {slot.status === "available" && (
-                  <button
+              {slot.status==='booked' && <Link to={`/dashboard/bookedSlotDetails/${slot.trainerData.email}`}><button
+                    
+                    className="text-red-500 hover:text-red-700 px-2"
+                  >
+                    
+                    <FaEye></FaEye>
+                  </button></Link>}
+              <button
                     onClick={() => handleDelete(index,slot.trainerData.email)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 "
                   >
                     <FaTrash />
+                    
                   </button>
-                )}
+
+                
+                 
+
+                  
+                
               </td>
             </tr>
           ))}
