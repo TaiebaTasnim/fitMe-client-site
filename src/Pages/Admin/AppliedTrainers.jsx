@@ -2,6 +2,7 @@ import { Link} from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const AppliedTrainers = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,6 +21,7 @@ const AppliedTrainers = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Helmet><title>FitMe | Applied Trainers</title></Helmet>
       <h1 className="text-2xl font-bold mb-6">Applied Trainers</h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-200">

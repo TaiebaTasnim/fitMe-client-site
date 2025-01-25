@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import { TiTick } from "react-icons/ti";
 import usePackege from "../../hooks/usePackege";
+import { Helmet } from "react-helmet";
 
 const TrainerBookedPage = () => {
   const { index, id } = useParams();
@@ -36,6 +37,7 @@ const TrainerBookedPage = () => {
 
   return (
     <div className="container mx-auto w-[90%]">
+      <Helmet><title>FitMe | Selected Slot info</title></Helmet>
       {/* Trainer Info Section */}
       <div className="bg-white shadow-lg rounded-lg py-6 px-4 sm:px-8 lg:px-16 mb-8">
         <div className="flex items-center gap-6">

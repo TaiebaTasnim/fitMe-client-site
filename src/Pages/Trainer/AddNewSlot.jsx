@@ -6,6 +6,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import { Helmet } from "react-helmet";
 //import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AddNewSlot = () => {
@@ -127,6 +128,7 @@ const slots = formData.days.map((day) => ({
 
   return (
     <div className="p-6 bg-gray-100 rounded-md shadow-md">
+      <Helmet><title>FitMe | Add Slots</title></Helmet>
       {trainerData?.email ? (
         <form onSubmit={handleSubmit}>
           {/* Display read-only trainer info */}

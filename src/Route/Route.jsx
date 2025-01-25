@@ -93,6 +93,10 @@ const Route = createBrowserRouter([
                   element:<PrivateRoute><Payment></Payment></PrivateRoute>,
                  
             },
+            {
+                  path:'beTrainer',
+                  element:<PrivateRoute><TrainerForm></TrainerForm></PrivateRoute>
+            },
 
 
         ]
@@ -102,10 +106,7 @@ const Route = createBrowserRouter([
             element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             errorElement:<ErrorPage></ErrorPage>,
             children:[
-                  {
-                        path:'beTrainer',
-                        element:<MemberRoute><TrainerForm></TrainerForm></MemberRoute>
-                  },
+                  
                   {
                         path:'addClasses',
                         element:<AdminRoute><AddClassForm></AddClassForm></AdminRoute>

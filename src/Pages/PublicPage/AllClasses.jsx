@@ -4,6 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Helmet } from "react-helmet";
 
 
 
@@ -43,6 +44,7 @@ const AllClasses = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
+      <Helmet><title>FitMe | All Classes</title></Helmet>
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">All Classes</h1>
 
       {/* Search Bar and Button */}

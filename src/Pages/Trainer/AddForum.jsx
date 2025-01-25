@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../api/utils";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddForum = () => {
   const formRef = useRef(null); // Reference to reset the form
@@ -47,6 +48,7 @@ const AddForum = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <Helmet><title>FitMe | Add Forum</title></Helmet>
       <form
         onSubmit={handleSubmit}
         ref={formRef}

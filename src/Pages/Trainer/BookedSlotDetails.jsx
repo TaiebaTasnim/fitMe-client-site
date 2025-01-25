@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 
 const BookedSlotDetails = () => {
@@ -29,6 +30,7 @@ const BookedSlotDetails = () => {
 
       return (
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
+                  <Helmet><title>FitMe | Booked Slot Details</title></Helmet>
       <div className="max-w-md bg-white rounded-2xl shadow-lg space-y-4 p-10">
         <h2 className="text-xl font-bold mb-4 text-blue-700">Booked Slot Details</h2>
         <p>

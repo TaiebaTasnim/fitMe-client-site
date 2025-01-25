@@ -23,6 +23,7 @@ const Testimonials = () => {
 
   return (
     <div className="my-12 container mx-auto px-4">
+      
       <h2 className="text-4xl font-bold text-center mb-8">What Our Clients Say</h2>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}

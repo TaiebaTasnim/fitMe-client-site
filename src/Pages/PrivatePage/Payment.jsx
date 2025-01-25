@@ -8,6 +8,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { Helmet } from "react-helmet";
 
 const Payment = () => {
   const { user } = useContext(AuthContext);
@@ -51,6 +52,7 @@ const Payment = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10">
+      <Helmet><title>FitMe | Payment</title></Helmet>
       <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Payment Details

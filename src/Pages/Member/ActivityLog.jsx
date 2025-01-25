@@ -4,6 +4,7 @@ import LoadingSpinner from "../../Components/Shared/LoadingSpinner"; // Custom l
 import useAxiosSecure from "../../hooks/useAxiosSecure"; // Axios hook
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const ActivityLog = () => {
   const axiosSecure = useAxiosSecure();
@@ -42,6 +43,7 @@ const ActivityLog = () => {
 
   return (
     <section className="container mx-auto p-6">
+      <Helmet><title>FitMe | Activity Log</title></Helmet>
       <h1 className="text-2xl font-bold mb-4">Activity Log</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg">

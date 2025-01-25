@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AllTrainers = () => {
   const axiosPublic = useAxiosPublic();
@@ -30,6 +31,7 @@ const AllTrainers = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">
+      <Helmet><title>FitMe | All Trainers</title></Helmet>
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Verified Trainers
       </h1>

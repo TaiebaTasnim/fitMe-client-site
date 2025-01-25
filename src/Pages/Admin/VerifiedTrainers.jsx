@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const VerifiedTrainers = () => {
@@ -50,6 +51,7 @@ const VerifiedTrainers = () => {
         if (isLoading) return <LoadingSpinner />;
       return (
             <div className="p-6">
+              <Helmet><title>FitMe | All Verified Trainers</title></Helmet>
       <h1 className="text-2xl font-bold mb-4">All Trainers</h1>
       {trainers.length === 0 ? (
         <p>No verified trainers found.</p>

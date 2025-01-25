@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const Subscribers = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,6 +30,7 @@ const Subscribers = () => {
 
   return (
     <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+      <Helmet><title>FitMe | Subscribers</title></Helmet>
       <h1 className="text-3xl font-bold text-center mb-6">All Newsletter Subscribers</h1>
 
       {subscribers?.length > 0 ? (

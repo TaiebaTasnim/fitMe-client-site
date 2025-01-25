@@ -6,6 +6,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { imageUpload } from "../../api/utils";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 export const TrainerForm = () => {
   const formRef = useRef(null);
@@ -126,6 +127,7 @@ export const TrainerForm = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <Helmet><title>FitMe | Trainer Form</title></Helmet>
       <form
         onSubmit={handleSubmit}
         ref={formRef}

@@ -7,6 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 //import Swal from "sweetalert2";
 
 const ManageSlots = () => {
@@ -70,6 +71,7 @@ const ManageSlots = () => {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+      <Helmet><title>FitMe | Manage Slots</title></Helmet>
       <h2 className="text-3xl font-bold mb-6">Manage Slots</h2>
       <table className="table-auto w-full bg-white rounded-lg shadow-lg">
         <thead className="bg-[#abc502] text-white">

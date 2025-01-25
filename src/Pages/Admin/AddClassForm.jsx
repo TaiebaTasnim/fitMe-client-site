@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../api/utils";
+import { Helmet } from "react-helmet";
 
 const AddClassForm = () => {
   const formRef = useRef(null); // Reference to reset the form
@@ -43,6 +44,7 @@ const AddClassForm = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <Helmet><title>FitMe | Add Class</title></Helmet>
       <form
         onSubmit={handleSubmit}
         ref={formRef}

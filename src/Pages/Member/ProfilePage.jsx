@@ -8,6 +8,7 @@ import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../api/utils";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 
@@ -65,6 +66,7 @@ const ProfilePage = () => {
 
   return (
     <section className="container mx-auto p-6">
+      <Helmet><title>FitMe | {userData?.name}&apos;s Profile</title></Helmet>
       <div className="bg-gray-100 rounded-lg shadow-md p-6 max-w-md mx-auto">
         <div className="text-center">
           <img

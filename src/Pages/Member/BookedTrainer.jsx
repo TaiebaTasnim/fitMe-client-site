@@ -7,12 +7,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import ReactStars from "react-rating-stars-component";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const BookedTrainer = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const {email}=useParams()
-  //console.log(user.email);
+  console.log(email);
 
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [feedback, setFeedback] = useState("");
@@ -21,13 +22,13 @@ const BookedTrainer = () => {
 
   // Fetch trainer details using react-query
   const { data: payments = [], isLoading, isError } = useQuery({
-    queryKey: ["payments", user?.email],
+    queryKey: ["payments", email],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/payments/${email}`);
+      const response = await axiosSecure.get(`/payments1/${email}`);
       console.log(response)
       return response.data;
     },
-    enabled: !!user?.email,
+    enabled: !!email,
   });
 
   const convertTo12HourFormat = (time) => {
@@ -77,6 +78,7 @@ const BookedTrainer = () => {
 
   return (
     <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+      <Helmet><title>FitMe | All Booked Trainers</title></Helmet>
       <h1 className="text-3xl font-bold text-center mb-6">Trainer Details</h1>
 
       {payments?.length > 0 ? (

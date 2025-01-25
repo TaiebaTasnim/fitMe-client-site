@@ -7,6 +7,7 @@ import { TbFidgetSpinner } from 'react-icons/tb'
 import { useContext} from 'react'
 import { AuthContext } from '../Provider/AuthProvider'
 import { imageUpload, saveUser } from '../api/utils'
+import { Helmet } from 'react-helmet'
 
 const Register = () => {
   const { createUser, updateUserProfile, signInWithGoogle,loading } = useContext(AuthContext)
@@ -59,6 +60,7 @@ const Register = () => {
   }
   return (
     <div className='flex justify-center items-center min-h-screen bg-white'>
+       <Helmet><title>FitMe | SignUp</title></Helmet>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>

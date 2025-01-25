@@ -2,6 +2,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet';
 
 const Balance = () => {
   
@@ -57,6 +58,7 @@ const Balance = () => {
 
   return (
     <div className='space-y-4'>
+      <Helmet><title>FitMe | Balance</title></Helmet>
       <div className="balance-section">
         <h2>Total Balance</h2>
         <p>${balance.totalBalance}</p>

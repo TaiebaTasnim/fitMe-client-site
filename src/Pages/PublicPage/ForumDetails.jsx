@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 //import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const ForumDetails = () => {
   const axiosPublic = useAxiosPublic();
@@ -23,6 +24,7 @@ const ForumDetails = () => {
 
   return (
     <div className="container mx-auto w-[90%] my-10 p-6">
+      <Helmet><title>FitMe | Post Details</title></Helmet>
       {/* Banner Image */}
       <div className="w-full h-96 relative rounded-lg overflow-hidden shadow-lg">
         <img
