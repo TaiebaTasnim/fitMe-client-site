@@ -267,7 +267,7 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaLock />
-                        <NavLink to="/order/contact" onClick={handlesignout}>
+                        <NavLink  onClick={handlesignout}>
                             Log Out
                         </NavLink>
                     </li>
@@ -300,7 +300,7 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaLock />
-                        <NavLink to="/order/contact" onClick={handlesignout}>
+                        <NavLink  onClick={handlesignout}>
                             Log Out
                         </NavLink>
                     </li>
@@ -327,7 +327,7 @@ const Dashboard = () => {
                     </li>
                     <li className="flex items-center gap-2">
                         <FaLock />
-                        <NavLink to="/order/contact" onClick={handlesignout}>
+                        <NavLink  onClick={handlesignout}>
                             Log Out
                         </NavLink>
                     </li>
