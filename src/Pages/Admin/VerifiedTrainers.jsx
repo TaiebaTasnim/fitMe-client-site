@@ -50,15 +50,15 @@ const VerifiedTrainers = () => {
           };
         if (isLoading) return <LoadingSpinner />;
       return (
-            <div className="p-6">
+            <div className="p-6 overflow-x-auto">
               <Helmet><title>FitMe | All Verified Trainers</title></Helmet>
-      <h1 className="text-2xl font-bold mb-4">All Trainers</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">All Trainers</h1>
       {trainers.length === 0 ? (
         <p>No verified trainers found.</p>
       ) : (
         <table className="table-auto w-full border-collapse border border-gray-200">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-[#abc502]">
               <th className="border border-gray-300 px-4 py-2">Name</th>
               <th className="border border-gray-300 px-4 py-2">Email</th>
               <th className="border border-gray-300 px-4 py-2">Actions</th>

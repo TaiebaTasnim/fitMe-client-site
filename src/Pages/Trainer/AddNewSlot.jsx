@@ -37,7 +37,7 @@ const AddNewSlot = () => {
 //   const { data: trainerData={}, isLoading, isError, error, refetch } = useQuery({
 //       queryKey: ["trainerData", user?.email],
 //       queryFn: async () => {
-//         const response = await axiosSecure.get(`/trainers3/${user?.email}`);
+//         const response = await axiosSecure.get(/trainers3/${user?.email});
 //         return response.data;
 //       },
 //     });
@@ -45,6 +45,7 @@ const AddNewSlot = () => {
       queryKey: ["trainerData", user?.email],
       queryFn: async () => {
         const response = await axiosSecure.get(`/trainers5/${user?.email}`);
+       
         return response.data;
       },
     });
@@ -127,40 +128,99 @@ const slots = formData.days.map((day) => ({
   };
 
   return (
-    <div className="p-6 bg-gray-100 rounded-md shadow-md">
+    <div className="p-6 bg-gray-100 rounded-md shadow-md mt-6 lg:mt-0">
       <Helmet><title>FitMe | Add Slots</title></Helmet>
       {trainerData?.email ? (
         <form onSubmit={handleSubmit}>
           {/* Display read-only trainer info */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label>Name</label>
+              <label htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">Name</label>
               <input
                 type="text"
-                className="input"
+                
                 value={trainerData.full_name}
+                className="w-full px-4 py-2 border rounded-lg"
                 readOnly
               />
             </div>
             <div>
-              <label>Email</label>
+              <label htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">Email</label>
               <input
                 type="email"
-                className="input"
+                className="w-full px-4 py-2 border rounded-lg"
                 value={trainerData.email}
                 readOnly
               />
             </div>
-            <div>
-              <label>Skills</label>
+            <div >
+              <label htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">Skills</label>
               <input
                 type="text"
-                className="input"
+                className="w-full px-4 py-2 border rounded-lg"
                 value={trainerData.skills.join(", ")}
                 readOnly
               />
             </div>
+            {/* Age */}
             <div>
+            <label
+              htmlFor="age"
+              className="block text-sm font-medium text-gray-600 mb-1"
+            >
+              Age
+            </label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              value={trainerData.age}
+              readOnly
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#abc502]"
+            />
+          </div>
+          <div >
+            <label  htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">Slot Name</label>
+            <input
+              type="text"
+              className="w-full px-4 py-2 border rounded-lg"
+              name="slot_name"
+              value={trainerData.slots[0].slot_name}
+             readOnly
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="years_of_experience"
+              className="block text-sm font-medium text-gray-600 mb-1"
+            >
+              Experience (Years)
+            </label>
+            <input
+              type="number"
+              
+              value={trainerData.years_of_experience}
+              onChange={handleInputChange}
+             readOnly
+              className="w-full focus:ring-[#abc502] px-4 py-2 border rounded-lg focus:outline-none"
+            />
+          </div>
+          <div className="">
+  <label>Available Days</label>
+  <Select
+    isMulti
+    options={dayOptions}
+    value={trainerData.slots.map(slot => ({
+      label: slot.available_day,
+      value: slot.available_day
+    }))}
+    isDisabled={true}  // Read-only
+  />
+</div>
+          
+
+            
+            {/* <div>
               <label>Status</label>
               <input
                 type="text"
@@ -168,23 +228,23 @@ const slots = formData.days.map((day) => ({
                 value={trainerData.status}
                 readOnly
               />
-            </div>
+            </div> */}
           </div>
-
+           <hr className="border-2 mt-6"></hr>
           {/* Slot Details */}
           <div className="mt-6">
-            <label>Slot Name</label>
+            <label  htmlFor="full_name" className="block text-sm font-medium text-gray-600 mb-1">Slot Name</label>
             <input
               type="text"
-              className="input"
+              className="w-full px-4 py-2 border rounded-lg"
               name="slot_name"
-              value={formData.slot_name}
+             
               onChange={handleInputChange}
               required
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 z-10">
             <label>Available Days</label>
             <Select isMulti options={dayOptions} onChange={handleSelectChange} />
           </div>
@@ -223,8 +283,8 @@ const slots = formData.days.map((day) => ({
             />
           </div>
 
-          <div className="mt-6">
-            <button type="submit" className="btn btn-primary">
+          <div className="mt-6 text-right">
+            <button type="submit" className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg">
               Submit
             </button>
           </div>

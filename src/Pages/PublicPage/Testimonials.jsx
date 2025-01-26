@@ -36,7 +36,7 @@ const Testimonials = () => {
           // Adjust based on screen size
           1024: { slidesPerView: 3 },
           768: { slidesPerView: 2 },
-          640: { slidesPerView: 1 },
+          300: { slidesPerView: 1 },
         }}
         className="pb-10"
       >

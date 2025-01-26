@@ -47,9 +47,11 @@ const FeaturedClasses = () => {
               <div className="mt-4">
                 <h2 className="text-lg font-bold">{classItem.class_name}</h2>
                 <p className="text-sm text-gray-700 mt-2">
-                  {classItem.class_details}
+                {classItem.class_details.length > 50
+                    ? `${classItem.class_details.substring(0, 50)}...`
+                    : classItem.class_details}
                 </p>
-                <p className="mt-4 text-blue-500 font-semibold">
+                <p className="mt-4 text-[#abc502] font-semibold">
                   Total Bookings: {classItem.bookingCount}
                 </p>
               </div>

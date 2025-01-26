@@ -91,7 +91,7 @@ const ProfilePage = () => {
       {/* Update Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+          <div className="bg-white rounded-lg p-6 container mx-auto w-[90%]">
             <h2 className="text-xl font-bold mb-4">Update Profile</h2>
             <form onSubmit={handleUpdate} className="space-y-4">
               <div>
@@ -135,7 +135,7 @@ const ProfilePage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                  className="px-4 py-2 bg-[#abc502] text-black rounded-lg "
                 >
                   Save Changes
                 </button>

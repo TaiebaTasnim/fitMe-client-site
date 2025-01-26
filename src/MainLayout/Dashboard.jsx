@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { FaBars, FaCalendar, FaHome, FaLock, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaHome, FaLock} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useRole from "../hooks/useRole";
 import { useContext, useState } from "react";
@@ -227,84 +227,232 @@ const Dashboard = () => {
         //         <Outlet></Outlet>
         //     </div>
         // </div>
-        <div className="relative min-h-screen md:flex bg-white">
-            <Helmet><title>FitMe | Dashboard</title></Helmet>
-            {!isSidebarOpen && (
-                <button 
-                    className="absolute top-4 left-4 md:hidden text-2xl z-50" 
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                    <FaBars />
-                </button>
-            )}
-            {/* dashboard side bar */}
-            <div className={`min-h-screen bg-[#abc502] pt-6 absolute md:relative w-64 transition-transform transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
-                {role === 'member' && <div><ul className="pl-4 space-y-5">
+        // <div className="relative min-h-screen lg:flex bg-white">
+        //     <Helmet><title>FitMe | Dashboard</title></Helmet>
+        //     {!isSidebarOpen && (
+        //         <button 
+        //             className="absolute top-4 left-4 lg:hidden text-2xl z-50" 
+        //             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        //         >
+        //             <FaBars />
+        //         </button>
+        //     )}
+        //     {/* dashboard side bar */}
+        //     <div className={`min-h-screen bg-[#abc502] pt-6 absolute lg:relative w-64 transition-transform transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}>
+        //     <div className="flex items-center space-x-2 pl-4 mb-4">
+        //     {/* Logo */}
+        //     <div className="w-10 h-10  flex justify-center items-center">
+        //       {/* Add an SVG or an icon */}
+        //      <img src="/logo-web.webp" alt="logo" className="rounded-full " />
+        //     </div>
+        //     {/* Website Name */}
+        //     <span className="text-2xl font-semibold">FitMe</span>
+        //   </div>
+        //         {role === 'member' && <div><ul className="pl-4 space-y-5">
+        //             <li className="flex items-center gap-2">
+                        
+        //                 <NavLink to="/dashboard/activityLog" onClick={handleNavLinkClick}>
+        //                     Activity Log
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                       
+        //                 <NavLink to={`/dashboard/profile/${user?.email}`} onClick={handleNavLinkClick}>
+        //                     My Profile
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                       
+        //                 <NavLink to={`/dashboard/bookedTrainer/${user?.email}`} onClick={handleNavLinkClick}>
+        //                     Booked Trainer 
+        //                 </NavLink>
+        //             </li>
+        //             <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
+        //             <li className="flex items-center gap-2">
+        //                 <FaHome />
+        //                 <NavLink to="/" onClick={handleNavLinkClick}>
+        //                     Home 
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+        //                 <FaLock />
+        //                 <NavLink  onClick={handlesignout}>
+        //                     Log Out
+        //                 </NavLink>
+        //             </li>
+        //         </ul></div>}
+        //         {role === 'admin' && <div><ul className="pl-4 space-y-5">
+        //             <li className="flex items-center gap-2">
+                        
+        //                 <NavLink to="/dashboard/subscribers" onClick={handleNavLinkClick}>
+        //                     Newsletter Subscribers
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                       
+        //                 <NavLink to="/dashboard/verifiedTrainers" onClick={handleNavLinkClick}>
+        //                     All Trainers
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                        
+        //                 <NavLink to="/dashboard/appliedTrainers" onClick={handleNavLinkClick}>
+        //                     Applied Trainers 
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                        
+        //                 <NavLink to="/dashboard/balance" onClick={handleNavLinkClick}>
+
+        //                     Balance </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                        
+        //                  <NavLink to="/dashboard/addClasses" onClick={handleNavLinkClick}>
+
+        //                     Add New Class </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                     
+                        
+        //                  <NavLink to="/dashboard/addForumAdmin" onClick={handleNavLinkClick}>
+
+        //                      Add New Forum </NavLink>
+        //              </li>
+        //             <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
+        //             <li className="flex items-center gap-2">
+        //                 <FaHome />
+        //                 <NavLink to="/" onClick={handleNavLinkClick}>
+        //                     Home 
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+        //                 <FaLock />
+        //                 <NavLink  onClick={handlesignout}>
+        //                     Log Out
+        //                 </NavLink>
+        //             </li>
+        //         </ul></div>}
+        //         {role === 'trainer' && <div><ul className="pl-4 space-y-5">
+        //             <li className="flex items-center gap-2">
+                       
+        //                 <NavLink to="/dashboard/manageSlots" onClick={handleNavLinkClick}>
+        //                     Manage Slots
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                        
+        //                 <NavLink to="/dashboard/addSlot" onClick={handleNavLinkClick}>
+        //                     Add New Slot
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+                         
+        //                  <NavLink to="/dashboard/addForumTrainer" onClick={handleNavLinkClick}>
+
+        //                      Add New Forum </NavLink>
+        //              </li>
+        //             <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
+        //             <li className="flex items-center gap-2">
+        //                 <FaHome />
+        //                 <NavLink to="/" onClick={handleNavLinkClick}>
+        //                     Home 
+        //                 </NavLink>
+        //             </li>
+        //             <li className="flex items-center gap-2">
+        //                 <FaLock />
+        //                 <NavLink  onClick={handlesignout}>
+        //                     Log Out
+        //                 </NavLink>
+        //             </li>
+        //         </ul></div>}
+        //     </div>
+        //     {/* dashboard content */}
+        //     <div className="flex-1 p-8">
+        //         <Outlet />
+        //     </div>
+        // </div>
+        <div className="relative min-h-screen flex bg-white">
+  <Helmet><title>FitMe | Dashboard</title></Helmet>
+
+  {!isSidebarOpen && (
+    <button 
+      className="absolute top-4 left-4 lg:hidden text-2xl z-50" 
+      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+    >
+      <FaBars />
+    </button>
+  )}
+
+  {/* Sidebar */}
+  <div className={`min-h-screen bg-[#abc502] pt-6 fixed lg:relative w-64 transition-transform transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 z-40`}>
+    <div className="flex items-center space-x-2 pl-4 mb-4">
+      <div className="w-10 h-10 flex justify-center items-center">
+        <img src="/logo-web.webp" alt="logo" className="rounded-full" />
+      </div>
+      <span className="text-2xl font-semibold">FitMe</span>
+    </div>
+    {/* Navigation Links */}
+    {role === 'member' && (
+      <ul className="pl-4 space-y-5">
+        <li className="flex items-center gap-2">
+          <NavLink to="/dashboard/activityLog" onClick={handleNavLinkClick}>
+            Activity Log
+          </NavLink>
+        </li>
+        <li className="flex items-center gap-2">
+          <NavLink to={`/dashboard/profile/${user?.email}`} onClick={handleNavLinkClick}>
+            My Profile
+          </NavLink>
+        </li>
+        <div className="w-52 h-[2px] bg-black my-6"></div>
+        <li className="flex items-center gap-2">
+          <FaHome />
+          <NavLink to="/" onClick={handleNavLinkClick}>
+            Home
+          </NavLink>
+        </li>
+        <li className="flex items-center gap-2">
+          <FaLock />
+          <NavLink onClick={handlesignout}>
+            Log Out
+          </NavLink>
+        </li>
+      </ul>
+    )}
+     {role === 'admin' && <div><ul className="pl-4 space-y-5">
                     <li className="flex items-center gap-2">
-                        <FaHome />
-                        <NavLink to="/dashboard/activityLog" onClick={handleNavLinkClick}>
-                            Activity Log
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center gap-2">
-                        <FaCalendar />
-                        <NavLink to={`/dashboard/profile/${user?.email}`} onClick={handleNavLinkClick}>
-                            My Profile
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center gap-2">
-                        <FaShoppingCart />
-                        <NavLink to={`/dashboard/bookedTrainer/${user?.email}`} onClick={handleNavLinkClick}>
-                            Booked Trainer 
-                        </NavLink>
-                    </li>
-                    <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
-                    <li className="flex items-center gap-2">
-                        <FaHome />
-                        <NavLink to="/" onClick={handleNavLinkClick}>
-                            Home 
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center gap-2">
-                        <FaLock />
-                        <NavLink  onClick={handlesignout}>
-                            Log Out
-                        </NavLink>
-                    </li>
-                </ul></div>}
-                {role === 'admin' && <div><ul className="pl-4 space-y-5">
-                    <li className="flex items-center gap-2">
-                        <FaHome />
+                        
                         <NavLink to="/dashboard/subscribers" onClick={handleNavLinkClick}>
                             Newsletter Subscribers
                         </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                        <FaCalendar />
+                       
                         <NavLink to="/dashboard/verifiedTrainers" onClick={handleNavLinkClick}>
                             All Trainers
                         </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                        <FaShoppingCart />
+                        
                         <NavLink to="/dashboard/appliedTrainers" onClick={handleNavLinkClick}>
                             Applied Trainers 
                         </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                        <FaShoppingCart></FaShoppingCart>
+                        
                         <NavLink to="/dashboard/balance" onClick={handleNavLinkClick}>
 
                             Balance </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                        <FaShoppingCart></FaShoppingCart>
+                        
                          <NavLink to="/dashboard/addClasses" onClick={handleNavLinkClick}>
 
                             Add New Class </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                         <FaShoppingCart></FaShoppingCart>
+                     
                         
                          <NavLink to="/dashboard/addForumAdmin" onClick={handleNavLinkClick}>
 
@@ -326,19 +474,19 @@ const Dashboard = () => {
                 </ul></div>}
                 {role === 'trainer' && <div><ul className="pl-4 space-y-5">
                     <li className="flex items-center gap-2">
-                        <FaHome />
+                       
                         <NavLink to="/dashboard/manageSlots" onClick={handleNavLinkClick}>
                             Manage Slots
                         </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                        <FaCalendar />
+                        
                         <NavLink to="/dashboard/addSlot" onClick={handleNavLinkClick}>
                             Add New Slot
                         </NavLink>
                     </li>
                     <li className="flex items-center gap-2">
-                         <FaShoppingCart></FaShoppingCart>
+                         
                          <NavLink to="/dashboard/addForumTrainer" onClick={handleNavLinkClick}>
 
                              Add New Forum </NavLink>
@@ -357,12 +505,14 @@ const Dashboard = () => {
                         </NavLink>
                     </li>
                 </ul></div>}
-            </div>
-            {/* dashboard content */}
-            <div className="flex-1 p-8">
-                <Outlet />
-            </div>
-        </div>
+  </div>
+
+  {/* Dashboard Content */}
+  <div className="flex-1 lg:ml-16 p-8 min-h-screen overflow-y-auto">
+    <Outlet />
+  </div>
+</div>
+
 
 
     );

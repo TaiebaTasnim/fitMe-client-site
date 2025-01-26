@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { SiTrainerroad } from "react-icons/si";
 
 const ForumDetails = () => {
   const axiosPublic = useAxiosPublic();
@@ -33,7 +35,7 @@ const ForumDetails = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-          <h1 className="text-4xl text-white font-bold">{forum.title}</h1>
+          <h1 className="text-2xl text-center md:text-4xl text-white font-bold">{forum.title}</h1>
         </div>
       </div>
 
@@ -47,7 +49,16 @@ const ForumDetails = () => {
               Created by: {forum.createdBy.email}
             </p>
             <p className="text-sm text-gray-500">
-              Role: {forum.createdBy.role} • {new Date(forum.createdAt).toLocaleDateString()}
+              {forum.createdBy.role === "admin" && (
+                                    <div className="flex items-center gap-2">
+                                      <MdAdminPanelSettings className="text-[#abc502]" /> Admin • {new Date(forum.createdAt).toLocaleDateString()}
+                                    </div>
+                                  )}
+                                  {forum.createdBy.role === "trainer" && (
+                                    <div className="flex items-center gap-2">
+                                      <SiTrainerroad className="text-[#abc502]"  /> Trainer • {new Date(forum.createdAt).toLocaleDateString()}
+                                    </div>
+                                  )} 
             </p>
           </div>
         </div>

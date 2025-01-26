@@ -47,7 +47,7 @@ const AddForum = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center min-h-screen bg-gray-50 mt-6 md:mt-0">
       <Helmet><title>FitMe | Add Forum</title></Helmet>
       <form
         onSubmit={handleSubmit}

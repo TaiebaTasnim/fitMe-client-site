@@ -69,10 +69,10 @@ const ActivityLog = () => {
                   <td className="px-6 py-4 text-sm text-gray-700">{index+1}</td>
                 <td className="px-6 py-4 text-sm text-gray-700">{trainer.full_name}</td>
                 <td className="px-6 py-4 text-sm text-gray-700">{trainer.email}</td>
-                <td className="px-6 py-4 text-sm text-gray-700 flex items-center gap-2">
+                <td className="px-6 py-4 text-sm text-gray-700 flex items-center  gap-2">
                   <span>{trainer.status}</span>
                   {trainer.status === "rejected" && (
-                    <FaEye onClick={handlefeedback} className="text-black cursor-pointer hover:text-[#abc502]" />
+                    <FaEye onClick={handlefeedback} className="text-[#abc502] cursor-pointer hover:text-[#abc502]" />
                   )}
                 </td>
               </tr>
@@ -83,7 +83,7 @@ const ActivityLog = () => {
        {/* Feedback Modal */}
        {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6 w-1/3">
+          <div className="bg-white rounded-lg p-6 container mx-auto w-[90%]">
             <h3 className="text-lg font-bold mb-4">Rejection Feedback</h3>
             <p>{feedback.feedback}</p>
             <div className="flex justify-end mt-4">

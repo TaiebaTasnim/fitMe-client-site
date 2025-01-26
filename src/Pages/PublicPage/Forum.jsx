@@ -83,7 +83,7 @@ const Forum = () => {
                     )}
                     {forum.createdBy.role === "trainer" && (
                       <div className="flex items-center gap-2">
-                        <SiTrainerroad /> Trainer
+                        <SiTrainerroad className="text-[#abc502]" /> Trainer
                       </div>
                     )}
                   </div>
@@ -138,7 +138,7 @@ const Forum = () => {
           <button
             disabled={currentPage === 1}
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+            className="px-4 py-2 bg-[#abc502] text-black rounded disabled:opacity-50"
           >
             Previous
           </button>
@@ -148,7 +148,7 @@ const Forum = () => {
           <button
             disabled={currentPage === totalPages}
             onClick={() => setPage((prev) => prev + 1)}
-            className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+            className="px-4 py-2 bg-[#abc502] text-black rounded disabled:opacity-50"
           >
             Next
           </button>

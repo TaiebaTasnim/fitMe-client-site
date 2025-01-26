@@ -22,8 +22,12 @@ const AppliedTrainers = () => {
   return (
     <div className="container mx-auto p-4">
       <Helmet><title>FitMe | Applied Trainers</title></Helmet>
-      <h1 className="text-2xl font-bold mb-6">Applied Trainers</h1>
-      <div className="overflow-x-auto">
+      <h1 className="text-2xl font-bold mb-6 text-center">Applied Trainers</h1>
+
+      {
+        trainers.map > 0 ? (
+          <div className="overflow-x-auto">
+
         <table className="table-auto w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
@@ -55,6 +59,10 @@ const AppliedTrainers = () => {
           </tbody>
         </table>
       </div>
+        ):(
+          <p className="text-center text-gray-700">No application for trainer found.</p>
+        )
+      }
     </div>
   );
 };

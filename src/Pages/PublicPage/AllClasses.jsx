@@ -53,10 +53,13 @@ const AllClasses = () => {
           type="text"
           placeholder="Search by class name"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);  // Update search query
+            setCurrentPage(1);  // Reset to the first page on search
+          }}
          
           //onClick={handleSearch} // Update search query on typing
-          className="w-[50%]  p-2 border border-gray-300 rounded-md"
+          className=" w-full md:w-[50%]  p-2 border border-gray-300 rounded-md"
         />
        
         {/* <button
@@ -73,21 +76,21 @@ const AllClasses = () => {
           data.classes.map((classItem) => (
             <div
               key={classItem._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  flex flex-col h-full"
             >
               <img
                 src={classItem.class_image}
                 alt={classItem.class_name}
                 className="w-full h-72 object-cover"
               />
-              <div className="p-6">
+              <div className="p-6 flex-grow">
                 <div className="flex justify-between">
                   <h2 className="text-xl font-bold text-gray-800 mb-2">{classItem.class_name}</h2>
                   <p className="text-gray-700 text-sm">Booking: {classItem.bookingCount}</p>
                 </div>
                 <p className="text-gray-600 mb-4">
-                {classItem.class_details.length > 100
-                    ? `${classItem.class_details.substring(0, 100)}...`
+                {classItem.class_details.length > 50
+                    ? `${classItem.class_details.substring(0, 50)}...`
                     : classItem.class_details}
                   </p>
                 <div>
@@ -149,7 +152,7 @@ const AllClasses = () => {
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={data?.currentPage === 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"
+          className="px-4 py-2 bg-[#abc502] text-black rounded-md mr-2"
         >
           Previous
         </button>
@@ -159,7 +162,7 @@ const AllClasses = () => {
         <button
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, data?.totalPages))}
           disabled={data?.currentPage === data?.totalPages}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md ml-2"
+          className="px-4 py-2 bg-[#abc502] text-black rounded-md ml-2"
         >
           Next
         </button>

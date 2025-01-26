@@ -46,7 +46,7 @@ const  Banner=()=> {
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Title */}
-              <h1 className="text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown uppercase ml-10">
+              <h1 className="text-3xl md:text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown uppercase ml-10">
                 {slide.title}
               </h1>
 

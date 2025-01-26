@@ -117,7 +117,7 @@ const AppliedTrainerDetails = () => {
           </button>
           <button
             onClick={handleConfirm}
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            className="bg-[#abc502] text-black px-4 py-2 rounded "
           >
             Confirm
           </button>
@@ -125,7 +125,7 @@ const AppliedTrainerDetails = () => {
          {/* Modal for Rejection Feedback */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6 w-1/3">
+          <div className="bg-white rounded-lg p-6 container mx-auto w-[90%]">
             <h3 className="text-lg font-bold mb-4">Provide Rejection Feedback</h3>
             <textarea
               value={feedback}

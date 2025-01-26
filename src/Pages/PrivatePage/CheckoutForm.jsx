@@ -135,7 +135,7 @@ const CheckoutForm = ({pkgId,trainer,index}) => {
                     },
                 }}
             />
-           <button className="mt-6 w-full bg-blue-500 text-white py-2 rounded-md text-lg font-medium hover:bg-blue-600 transition" disabled={!stripe || !clientSecret}>
+           <button className="mt-6 w-full bg-[#abc502] text-black py-2 rounded-md text-lg font-medium  transition" disabled={!stripe || !clientSecret}>
           Proceed to Payment
         </button>
         </form>

@@ -71,7 +71,7 @@ const RecentForums = () => {
                     : forum.details}
                 </p>
                 
-                <Link className="border-b-2" to={`/forumDetails/${forum._id}`}>
+                <Link className=" text-[#abc502] " to={`/forumDetails/${forum._id}`}>
                 Read More
                 </Link>
                 

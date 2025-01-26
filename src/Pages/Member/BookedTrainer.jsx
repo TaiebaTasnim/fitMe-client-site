@@ -110,7 +110,7 @@ const BookedTrainer = () => {
                   <td className="px-4 py-2 text-center">${payment.price}</td>
                   <td className="px-4 py-2 text-center">
                     <button
-                      className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                      className="bg-[#abc502] text-black px-4 py-2 rounded-md"
                       onClick={() => openModal(payment)}
                     >
                       Review
@@ -122,13 +122,13 @@ const BookedTrainer = () => {
           </table>
         </div>
       ) : (
-        <p className="text-center text-gray-700">No trainer details found.</p>
+        <p className="text-center text-gray-700">No trainer booked yet.</p>
       )}
 
       {/* Modal */}
       {modalIsOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/3">
+          <div className="bg-white p-6 rounded-lg shadow-lg container mx-auto w-[90%]">
             <h2 className="text-xl font-bold mb-4">Leave a Review</h2>
             <textarea
               className="w-full p-2 border rounded mb-4"
@@ -148,7 +148,7 @@ const BookedTrainer = () => {
             </div>
             <div className="flex justify-end">
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+                className="bg-[#abc502] text-black px-4 py-2 rounded-md mr-2"
                 onClick={submitReview}
               >
                 Submit

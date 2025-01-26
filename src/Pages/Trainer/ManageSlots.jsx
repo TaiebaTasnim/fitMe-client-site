@@ -69,12 +69,15 @@ const ManageSlots = () => {
     return <div>Error: {error.message}</div>;
   }
 
+  
+
   return (
-    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+    <div className="container mx-auto p-6 bg-gray-100 mt-6 rounded-lg shadow-lg">
       <Helmet><title>FitMe | Manage Slots</title></Helmet>
-      <h2 className="text-3xl font-bold mb-6">Manage Slots</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center">Manage Slots</h2>
+      <div className="overflow-x-auto">
       <table className="table-auto w-full bg-white rounded-lg shadow-lg">
-        <thead className="bg-[#abc502] text-white">
+        <thead className="bg-[#abc502] text-black">
           <tr>
             <th className="px-4 py-2">Day</th>
             <th className="px-4 py-2">Slot Name</th>
@@ -96,7 +99,7 @@ const ManageSlots = () => {
               {convertTo12HourFormat(slot.available_time.start)} -{" "}
               {convertTo12HourFormat(slot.available_time.end)}
               </td>
-             
+              
               <td className="px-4 py-2">{slot.class_name}</td>
               <td className="px-4 py-2">{slot.status}</td>
               <td className="px-4 py-2 text-center">
@@ -125,6 +128,9 @@ const ManageSlots = () => {
           ))}
         </tbody>
       </table>
+
+      </div>
+     
     </div>
   );
 };

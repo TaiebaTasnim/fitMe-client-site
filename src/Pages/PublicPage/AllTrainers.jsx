@@ -39,28 +39,30 @@ const AllTrainers = () => {
         {trainers.map((trainer) => (
           <div
             key={trainer._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full"
           >
             <img
               src={trainer.profile_image}
               alt={trainer.full_name}
               className="w-full h-60 object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 flex-grow">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 {trainer.full_name}
               </h2>
-              <p className="text-gray-600 mb-2">Age: {trainer.age}</p>
+              <p className="text-gray-600 mb-2"><strong>Age:</strong> {trainer.age}</p>
               <p className="text-gray-600 mb-2">
-                Experience: {trainer.years_of_experience} years
+                <strong>Experience:</strong> {trainer.years_of_experience} years
               </p>
               <p className="text-gray-600 mb-2">
-                Skills: {trainer.skills.join(", ")}
+                <strong>Skills:</strong> {trainer.skills.join(", ")}
               </p>
-              <div className="mb-4">
-                <p className="text-gray-600 mb-2">Available Slots:</p>
+              <p className="text-gray-600 mb-2"><strong>Available Slots:</strong></p>
+              <div className="mb-4 grid grid-cols-2 gap-3">
+                
                 {trainer.slots.map((slot, index) => (
-                  <div key={index} className="text-gray-600 mb-2">
+                  <div key={index} className="">
+                    <div  className="text-gray-600 mb-2 ">
                     <strong>{slot.slot_name}</strong>
                     <div>
                       <strong>Days: </strong>
@@ -70,6 +72,7 @@ const AllTrainers = () => {
         <strong>Time: </strong>
         {convertTo12HourFormat(slot.available_time.start)} - {convertTo12HourFormat(slot.available_time.end)}
       </div>
+                  </div>
                   </div>
                 ))}
               </div>
@@ -96,7 +99,7 @@ const AllTrainers = () => {
                 )}
               </div>
             </div>
-            <div className="pb-6 pr-6 text-right">
+            <div className="pb-6 pr-6 text-right mt-auto">
               <Link to={`/trainerDetails/${trainer._id}`}>
                 <button
                   type="submit"

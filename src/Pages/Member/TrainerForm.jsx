@@ -384,7 +384,7 @@ export const TrainerForm = () => {
           <button
             type="submit"
             disabled={mutation.isLoading}
-            className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg"
+            className="px-6 py-2 bg-[#abc502] text-black font-medium rounded-lg"
           >
             {mutation.isLoading ? "Saving..." : "Submit"}
           </button>
