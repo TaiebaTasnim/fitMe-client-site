@@ -25,7 +25,7 @@ const AppliedTrainers = () => {
       <h1 className="text-2xl font-bold mb-6 text-center">Applied Trainers</h1>
 
       {
-        trainers.map > 0 ? (
+        trainers.length > 0 ? (
           <div className="overflow-x-auto">
 
         <table className="table-auto w-full border-collapse border border-gray-200">

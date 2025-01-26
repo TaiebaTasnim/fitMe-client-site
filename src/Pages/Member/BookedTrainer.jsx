@@ -81,7 +81,7 @@ const BookedTrainer = () => {
       <Helmet><title>FitMe | All Booked Trainers</title></Helmet>
       <h1 className="text-3xl font-bold text-center mb-6">Trainer Details</h1>
 
-      {payments?.length > 0 ? (
+      {payments.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="table-auto w-full bg-white rounded-lg shadow-lg">
             <thead className="bg-[#abc502] text-white">
@@ -128,7 +128,7 @@ const BookedTrainer = () => {
       {/* Modal */}
       {modalIsOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg container mx-auto w-[90%]">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[60%]">
             <h2 className="text-xl font-bold mb-4">Leave a Review</h2>
             <textarea
               className="w-full p-2 border rounded mb-4"

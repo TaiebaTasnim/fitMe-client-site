@@ -405,6 +405,12 @@ const Dashboard = () => {
             My Profile
           </NavLink>
         </li>
+        <li className="flex items-center gap-2">
+                       
+                       <NavLink to={`/dashboard/bookedTrainer/${user?.email}`} onClick={handleNavLinkClick}>
+                             Booked Trainer 
+                         </NavLink>
+                     </li>
         <div className="w-52 h-[2px] bg-black my-6"></div>
         <li className="flex items-center gap-2">
           <FaHome />

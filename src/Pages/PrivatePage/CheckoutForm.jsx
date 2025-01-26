@@ -4,10 +4,11 @@ import {  useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 
 //import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -135,9 +136,13 @@ const CheckoutForm = ({pkgId,trainer,index}) => {
                     },
                 }}
             />
-           <button className="mt-6 w-full bg-[#abc502] text-black py-2 rounded-md text-lg font-medium  transition" disabled={!stripe || !clientSecret}>
+            
+            <button className="mt-6 w-full bg-[#abc502] text-black py-2 rounded-md text-lg font-medium  transition" disabled={!stripe || !clientSecret}>
           Proceed to Payment
         </button>
+
+           
+          
         </form>
                   
             </div>

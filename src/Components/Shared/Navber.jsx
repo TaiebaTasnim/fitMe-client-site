@@ -28,6 +28,7 @@ export const ComplexNavbar = () => {
 
   const { user, signout } = useContext(AuthContext);
   const [role]=useRole()
+  console.log(role)
   const navigate=useNavigate()
 
   const handlesignout = () => {

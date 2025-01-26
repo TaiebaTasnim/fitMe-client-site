@@ -73,10 +73,10 @@ const AppliedTrainerDetails = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 ">
       <Helmet><title>FitMe | Details of Applied Trainer {trainer?.full_name}</title></Helmet>
       <h1 className="text-2xl font-bold mb-4">Trainer Details</h1>
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 overflow-hidden">
         <img
           src={trainer?.profile_image}
           alt={trainer.full_name}

@@ -40,7 +40,7 @@ const ForumDetails = () => {
       </div>
 
       {/* Forum Details */}
-      <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
+      <div className="mt-8 bg-white rounded-lg shadow-lg p-6 overflow-hidden">
         {/* User Info */}
         <div className="flex items-center mb-4">
           
