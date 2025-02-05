@@ -8,34 +8,121 @@
 
 ---
 
-## 🚀 Features of FitMe
+# Fit-Me
 
-1. **User Dashboard** – Track workout activity logs and manage trainer bookings with ease.
-2. **Trainer Management** – Trainers can manage their available slots and see booked sessions.
-3. **Admin Control Panel** – Admins can add, remove, and manage trainers and users.
-4. **Role-Based Access** – Secure authentication with different roles (Admin, Trainer, Member).
-5. **Slot Booking System** – Users can book training slots based on trainer availability.
-6. **Payment Integration** – Secure online payments using Stripe.
-7. **Newsletter Subscription** – Stay updated with the latest fitness trends via email.
-8. **Profile Management** – Users can update their personal profiles and fitness goals.
-9. **Responsive Design** – Fully optimized for mobile, tablet, and desktop screens.
-10. **Secure Authentication** – Firebase authentication with JWT security.
+A modern web application designed to enhance fitness tracking, meal planning, and goal setting with an intuitive UI and seamless integration with Stripe for payments.
 
----
+![Fit-Me Screenshot](./screenshot.png) <!-- Replace with actual screenshot -->
+
+## 🚀 Features
+
+- **User Authentication:** Secure login and signup via Firebase.
+- **Fitness Tracking:** Log workouts and track progress.
+- **Payment Integration:** Secure payments using Stripe.
+- **Responsive UI:** Beautifully designed with TailwindCSS.
+- **Interactive Charts:** Visual data representation with Recharts.
+- **Real-time Updates:** Data synchronization via React Query.
+- **Enhanced UX:** Modals, tooltips, and toast notifications.
 
 ## 🛠️ Technologies Used
 
-- **Frontend:**  
-  - React.js (React Router, Context API)  
-  - Tailwind CSS  
-  - Axios (API requests)  
-  - React Tanstack Query  
+- **Frontend:** React, React Router, Tailwind CSS
+- **State Management:** React Query
+- **Backend & Authentication:** Firebase
+- **Payment Processing:** Stripe
+- **UI Enhancements:** Headless UI, Heroicons, Animate.css, SweetAlert2
+- **Charts & Visualization:** Recharts
+- **Development Tools:** Vite, ESLint, PostCSS
 
-- **Backend:**  
-  - Node.js with Express.js  
-  - MongoDB (Database)  
-  - JWT Authentication  
-  - Stripe Payments  
+## 📦 Dependencies
+
+### Core Dependencies
+```json
+{
+  "@headlessui/react": "^2.2.0",
+  "@heroicons/react": "^2.2.0",
+  "@material-tailwind/react": "^2.1.10",
+  "@stripe/react-stripe-js": "^3.1.1",
+  "@stripe/stripe-js": "^5.5.0",
+  "@tanstack/react-query": "^5.64.1",
+  "axios": "^1.7.9",
+  "firebase": "^11.1.0",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-router-dom": "^7.1.1",
+  "tailwindcss": "^3.4.17",
+  "vite": "^6.0.5"
+}
+```
+
+### Development Dependencies
+```json
+{
+  "@eslint/js": "^9.17.0",
+  "@types/react": "^18.3.18",
+  "@vitejs/plugin-react": "^4.3.4",
+  "eslint": "^9.17.0",
+  "postcss": "^8.5.1"
+}
+```
+
+## 📌 Environment Variables
+
+Create a `.env` file in the root directory and add:
+
+```plaintext
+VITE_apiKey=YOUR_FIREBASE_API_KEY
+VITE_authDomain=YOUR_AUTH_DOMAIN
+VITE_projectId=YOUR_PROJECT_ID
+VITE_storageBucket=YOUR_STORAGE_BUCKET
+VITE_messagingSenderId=YOUR_SENDER_ID
+VITE_appId=YOUR_APP_ID
+VITE_IMGBB_API_KEY=YOUR_IMGBB_KEY
+VITE_Payment_Gateway_PK=YOUR_STRIPE_PUBLIC_KEY
+```
+
+> **⚠️ Note:** Never expose sensitive keys in public repositories.
+
+## 🏗️ Installation & Setup
+
+Follow these steps to run the project locally:
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com//fit-me.git
+   cd fit-me
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   - Create a `.env` file as mentioned above.
+
+4. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+
+5. **Build for production (optional):**
+   ```sh
+   npm run build
+   ```
+
+## 🌍 Live Demo
+
+Check out the live version: [Fit-Me Live](https://fit-me-app.example.com) <!-- Replace with actual URL -->
+
+## 🤝 Contributors
+
+- **Your Name** - [GitHub Profile](https://github.com/yourusername)
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
 
 ---
 
+Let me know if you need any modifications! 🚀
