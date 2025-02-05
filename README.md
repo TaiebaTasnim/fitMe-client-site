@@ -1,18 +1,8 @@
 # FitMe - Your Personal Fitness Companion 💪
 
-**Live Site URL:** [https://fit-me-b5e4a.web.app](https://fit-me-b5e4a.web.app)
-
-**Admin Credentials:**  
-- **Username:** admin@gmail.com  
-- **Password:** Aa12345  
+FitMe is a web platform for tracking workouts, booking trainers, and managing fitness goals. It features a user dashboard, trainer management, role-based access, secure authentication, online payments, and a responsive design.
 
 ---
-
-# Fit-Me
-
-A modern web application designed to enhance fitness tracking, meal planning, and goal setting with an intuitive UI and seamless integration with Stripe for payments.
-
-![Fit-Me Screenshot](./screenshot.png) <!-- Replace with actual screenshot -->
 
 ## 🚀 Features
 
@@ -89,7 +79,7 @@ Follow these steps to run the project locally:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com//fit-me.git
+   git clone https://github.com/TaiebaTasnim/fit-me.git
    cd fit-me
    ```
 
@@ -113,16 +103,17 @@ Follow these steps to run the project locally:
 
 ## 🌍 Live Demo
 
-Check out the live version: [Fit-Me Live](https://fit-me-app.example.com) <!-- Replace with actual URL -->
+Check out the live version: [Fit-Me Live](https://fit-me-b5e4a.web.app) 
+
+**Admin Credentials:**  
+- **Username:** admin@gmail.com  
+- **Password:** Aa12345 
 
 ## 🤝 Contributors
 
-- **Your Name** - [GitHub Profile](https://github.com/yourusername)
+- **Your Name** - [GitHub Profile](https://github.com/TaiebaTasnim)
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
 
 ---
 
-Let me know if you need any modifications! 🚀
+
