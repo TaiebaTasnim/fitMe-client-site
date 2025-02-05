@@ -1,7 +1,7 @@
 # FitMe - Your Personal Fitness Companion 💪
 
-FitMe is a web platform for tracking workouts, booking trainers, and managing fitness goals. It features a user dashboard, trainer management, role-based access, secure authentication, online payments, and a responsive design.<br>
-🚀 Check out the live version: [Fit-Me Live](https://fit-me-b5e4a.web.app) 
+**FitMe is a web platform for tracking workouts, booking trainers, and managing fitness goals. It features a user dashboard, trainer management, role-based access, secure **authentication, online payments, and a responsive design.<br>
+**🚀 Check out the live version: [Fit-Me Live](https://fit-me-b5e4a.web.app) 
 ---
 
 ## 🚀 Features
