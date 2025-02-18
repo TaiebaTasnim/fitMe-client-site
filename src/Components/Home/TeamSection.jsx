@@ -36,7 +36,7 @@ const TeamSection = () => {
   }
 
   return (
-    <section className=" p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+    <section className=" p-4 my-10 bg-gray-100 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Meet Our Team</h1>
 
       <div className="container mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

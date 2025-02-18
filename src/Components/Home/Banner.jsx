@@ -32,21 +32,21 @@ const  Banner=()=> {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <Swiper
         modules={[Navigation]}
         navigation
         loop
-        className="h-[600px]"
+        className=" w-full min-h-screen  md:h-[600px] object-cover"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="h-full w-full bg-cover bg-center flex flex-col justify-center items-start text-left text-white px-8 "
+              className="h-full w-full bg-cover bg-center flex flex-col justify-center items-start text-left text-white px-8  "
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown uppercase ml-10">
+              <h1 className="text-3xl md:text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown uppercase ml-12 border-2">
                 {slide.title}
               </h1>
 

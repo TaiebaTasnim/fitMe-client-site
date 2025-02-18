@@ -33,8 +33,8 @@ const NewsletterSection = () => {
 
 
   return (
-    <section className="bg-[#abc502] container mx-auto w-[90%] py-12 my-10">
-      <div className="text-center">
+      <div className="bg-[#abc502]  my-10  container mx-auto w-[88%] py-12 border-2">
+    <section className="text-center">
         <h2 className="text-4xl font-bold text-black mb-6">Subscribe to Our Newsletter</h2>
         <p className="text-gray-800 mb-8">Stay updated with the latest news and offers</p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4">
@@ -61,8 +61,9 @@ const NewsletterSection = () => {
             Subscribe Now
           </button>
         </form>
-      </div>
+      
     </section>
+    </div>
   );
 };
 

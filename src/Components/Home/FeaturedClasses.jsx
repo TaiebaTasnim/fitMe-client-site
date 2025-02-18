@@ -29,7 +29,7 @@ const FeaturedClasses = () => {
 
   return (
    <div className="bg-gray-100">
-       <section className="container mx-auto w-[90%] p-6 my-10 ">
+       <section className="container mx-auto w-[90%] p-4 my-10 ">
       <h1 className="text-3xl font-bold text-center mb-6">Featured Classes</h1>
 
       {classes.length > 0 ? (

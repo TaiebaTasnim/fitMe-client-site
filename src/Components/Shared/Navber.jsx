@@ -43,8 +43,8 @@ export const ComplexNavbar = () => {
   };
 
   return (
-    <div className="bg-black text-white">
-      <Navbar className="mx-auto container w-[90%] p-4 bg-black border-none">
+    <div className="bg-black text-white fixed top-0 left-0 w-full z-50 ">
+      <Navbar className="mx-auto container w-[90%] p-4 bg-black border-none ">
         <div className="flex items-center justify-between">
           <Typography
             variant="h5"

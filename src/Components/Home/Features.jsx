@@ -31,7 +31,7 @@ const Features=()=> {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container w-[90%] mx-auto text-center">
+      <div className="container w-[90%] mx-auto p-4 text-center">
         {/* Section Heading */}
        <div className="flex flex-col items-center justify-center">
        <h2 className="text-3xl font-bold text-[#abc502] mb-4">
