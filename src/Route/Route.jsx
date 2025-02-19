@@ -117,7 +117,7 @@ const Route = createBrowserRouter([
                   },
                   {
                         path:'profile/:email',
-                        element:<MemberRoute><ProfilePage></ProfilePage></MemberRoute>
+                        element:<ProfilePage></ProfilePage>
                   },
                   {
                         path:'activityLog',

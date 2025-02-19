@@ -450,6 +450,11 @@ const Dashboard = () => {
       </ul>
     )}
      {role === 'admin' && <div><ul className="pl-4 space-y-5">
+      <li className="flex items-center gap-2 font-display">
+          <NavLink to={`/dashboard/profile/${user?.email}`} onClick={handleNavLinkClick}>
+            My Profile
+          </NavLink>
+        </li>
                     <li className="flex items-center gap-2 font-display">
                         
                         <NavLink to="/dashboard/subscribers" onClick={handleNavLinkClick}>
@@ -510,6 +515,11 @@ const Dashboard = () => {
                     </li>
                 </ul></div>}
                 {role === 'trainer' && <div><ul className="pl-4 space-y-5">
+                  <li className="flex items-center gap-2 font-display">
+          <NavLink to={`/dashboard/profile/${user?.email}`} onClick={handleNavLinkClick}>
+            My Profile
+          </NavLink>
+        </li>
                     <li className="flex items-center gap-2 font-display">
                        
                         <NavLink to="/dashboard/manageSlots" onClick={handleNavLinkClick}>
