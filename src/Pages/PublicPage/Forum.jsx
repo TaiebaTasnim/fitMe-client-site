@@ -58,14 +58,15 @@ const Forum = () => {
   const { forums, totalPages, currentPage } = data;
 
   return (
-    <div className="bg-gray-100 py-10">
+    <div className="bg-gray-100  dark:bg-black pt-32 pb-16 dark:pb-0">
       <Helmet><title>FitMe | All Posts</title></Helmet>
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Discover Our Latest News</h2>
+      <div className=" container mx-auto w-[90%]  px-4">
+        <h2 className="text-3xl font-bold text-center mb-6 text-[#abc502]">Discover Our Latest News</h2>
+        <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {forums.map((forum) => (
-            <div key={forum._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div key={forum._id} className="bg-white shadow-lg rounded-lg overflow-hidden dark:border-[#abc502] dark:border-2">
               <img src={forum.image} alt={forum.title} className="w-full h-48 object-cover" />
               <div className="flex p-4 justify-between items-center">
                 <div className="flex items-center">
@@ -142,7 +143,7 @@ const Forum = () => {
           >
             Previous
           </button>
-          <p className="mx-4">
+          <p className="mx-4 text-[#abc502]">
             Page {currentPage} of {totalPages}
           </p>
           <button

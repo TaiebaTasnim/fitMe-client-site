@@ -3,8 +3,8 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/f
 
 function Footer() {
   return (
-    <footer className="bg-black text-white py-8 ">
-      <div className="container mx-auto w-[88%]  px-4 ">
+    <footer className="bg-black text-white py-8 dark:border-t-[#abc502] dark:border-t-2">
+      <div className="container mx-auto w-[88%]   ">
         {/* Logo and Name */}
         <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0">
           <div className="flex items-center space-x-2">
@@ -60,7 +60,7 @@ function Footer() {
           <div className="md:ml-5">
             <h4 className="text-lg font-semibold mb-2 text-center md:text-start">Address</h4>
             <p className="text-sm text-gray-400 text-center md:text-start">
-              123 FitMe Street, Fitness City, Health State, 12345
+              123 FitMe Street, Fitness City, Health State
             </p>
           </div>
 

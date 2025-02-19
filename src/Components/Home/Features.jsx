@@ -30,7 +30,7 @@ const Features=()=> {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white dark:bg-black">
       <div className="container w-[90%] mx-auto p-4 text-center">
         {/* Section Heading */}
        <div className="flex flex-col items-center justify-center">
@@ -41,7 +41,7 @@ const Features=()=> {
         <div className="w-36 h-[2px] bg-[#abc502] mb-6 text-center"></div>
        
         
-        <p className="text-lg text-gray-600 mb-8">
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
           We provide unmatched quality to help you achieve your fitness goals.
         </p>
        </div>

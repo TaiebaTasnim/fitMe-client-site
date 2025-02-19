@@ -72,7 +72,7 @@ const ManageSlots = () => {
   
 
   return (
-    <div className="container mx-auto p-6 bg-gray-100 mt-6 rounded-lg shadow-lg">
+    <div className="container mx-auto p-6 bg-gray-100 dark:bg-black mt-6 rounded-lg shadow-lg">
       <Helmet><title>FitMe | Manage Slots</title></Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center">Manage Slots</h2>
       <div className="overflow-x-auto">

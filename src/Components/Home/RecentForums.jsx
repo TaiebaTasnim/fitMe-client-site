@@ -29,15 +29,16 @@ const RecentForums = () => {
           }
 
   return (
-    <div className="bg-gray-100 py-10">
+    <div className="bg-gray-100 dark:py-16 py-10  dark:bg-black">
       <div className="container  mx-auto w-[90%] p-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Discover Our Latest News</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#abc502]">Discover Our Latest News</h2>
+        <div className="w-36 mx-auto h-[2px] bg-[#abc502] mb-12 text-center"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {forums.map((forum) => (
             <div
               key={forum._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden"
+              className="bg-white shadow-lg rounded-lg overflow-hidden dark:border-[#abc502] dark:border-2"
             >
               <img
                 src={forum.image}

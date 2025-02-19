@@ -1,77 +1,81 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "animate.css";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const  Banner=()=> {
   const slides = [
     {
-      image: "https://i.ibb.co/xjjhwpr/gym2.jpg",
-      title: "AWESOME FITNESS",
-      description: "GET FIT IN LESS THAN 2 WEEKS",
-      subtext: "We provide high-quality fitness programs tailored for you.",
-      buttonText: "Explore More",
+      "image": "https://i.ibb.co.com/ccMgFRYP/pexels-sarazhizmailov-11183203.jpg",
+      "title": "AWESOME FITNESS",
+      "description": "Get fit, feel strong, and boost your energy in just 2 weeks!",
+      "subtext": "We provide high-quality, results-driven fitness programs designed to match your lifestyle and goals.",
+      "buttonText": "Explore More"
     },
     {
-      image: "https://i.ibb.co/4mwz9mR/gym3.jpg",
-      title: "BUILD YOUR STRENGTH",
-      description: "ACHIEVE YOUR GOALS",
-      subtext: "Join our expert trainers and achieve greatness.",
-      buttonText: "Explore More",
+      "image": "https://i.ibb.co.com/rKk0s1jp/pexels-krzysztof-biernat-406313862-15046713.jpg",
+      "title": "BUILD YOUR STRENGTH",
+      "description": "Unlock your full potential with expert-led strength training.",
+      "subtext": "Join our professional trainers and take your fitness journey to the next level with customized workouts and motivation.",
+      "buttonText": "Explore More"
     },
     {
-      image: "https://i.ibb.co/Q9J6jSJ/gym1.jpg",
-      title: "TRANSFORM YOUR BODY",
-      description: "PUSH YOUR LIMITS",
-      subtext: "Get ready for a new chapter of fitness excellence.",
-      buttonText: "Explore More",
-    },
-  ];
+      "image": "https://i.ibb.co/xjjhwpr/gym2.jpg",
+      "title": "TRANSFORM YOUR BODY",
+      "description": "Push beyond your limits and achieve the physique you’ve always wanted.",
+      "subtext": "Our advanced fitness programs and supportive community will help you stay committed and see real results.",
+      "buttonText": "Explore More"
+    }
+  ]
+  
 
   return (
     <div className="relative ">
       <Swiper
-        modules={[Navigation]}
-        navigation
-        loop
-        className=" w-full min-h-screen  md:h-[600px] object-cover"
+        modules={[Autoplay]}
+        autoplay={{ delay: 8000, disableOnInteraction: false }}
+        loop={true}
+        slidesPerView={1}
+        className="w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div
-              className="h-full w-full bg-cover bg-center flex flex-col justify-center items-start text-left text-white px-8  "
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
-              {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown uppercase ml-12 border-2">
-                {slide.title}
-              </h1>
+            <div className="relative">
+              <img
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                className="w-full min-h-screen  md:h-[600px] object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center   px-6 md:px-16 lg:px-24 ">
+                <div className="text-white text-center animate__animated animate__fadeInRight">
+                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    {slide.title}
+                  </h2>
+                  <p className="text-sm md:text-lg lg:text-xl mb-6 leading-relaxed text-center w-[60%] mx-auto">
+                    {slide.subtext}
+                  </p>
+                  <Link to='/allClasses'>
+                  <button className="py-3 px-6 bg-[#abc502] text-black rounded-lg font-semibold transition duration-500 ease-in-out relative overflow-hidden group text-center transform group-hover:scale-105">
+  <span className="absolute inset-0 bg-gradient-to-r from-[#abc502] via-[#f5ff66] to-[#73ff00] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+  <span className="relative group-hover:black transition duration-500 ease-in-out text-center flex items-center gap-2">
+    Explore More <FaArrowRight />
+  </span>
+</button>
 
-              {/* Description */}
-              <p className="text-2xl font-semibold mb-2 text-[#abc502] animate__animated animate__fadeInUp  ml-10  border-b-[#abc502] border-b-2">
-                {slide.description}
-              </p>
-             
-              
 
-              {/* Subtext */}
-              <p className="text-lg mb-6 animate__animated animate__fadeInUp  max-w-[600px] leading-relaxed ml-10">
-                {slide.subtext}
-              </p>
 
-              {/* Button */}
-              <Link to="/allClasses" className="px-6 py-3 bg-[#abc502] text-black font-medium rounded-lg shadow-lg hover:bg-[#9ab002] transition animate__animated animate__fadeInUp  ml-10">
-              {slide.buttonText}
-              </Link>
-                
-                
-              
-               
-              
+                  </Link>
+                  
+                 
+                </div>
+              </div>
             </div>
+            
           </SwiperSlide>
         ))}
       </Swiper>

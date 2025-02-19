@@ -33,7 +33,7 @@ const NewsletterSection = () => {
 
 
   return (
-      <div className="bg-[#abc502]  my-10  container mx-auto w-[88%] py-12 border-2">
+      <div className="bg-[#abc502]  my-10 dark:my-0    container mx-auto w-[88%] py-12 ">
     <section className="text-center">
         <h2 className="text-4xl font-bold text-black mb-6">Subscribe to Our Newsletter</h2>
         <p className="text-gray-800 mb-8">Stay updated with the latest news and offers</p>
@@ -56,7 +56,7 @@ const NewsletterSection = () => {
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-black text-white rounded-lg mt-4 hover:bg-[#8a8a8a]"
+            className="px-6 py-3 bg-black text-white rounded-lg mt-4 hover:scale-105 transition duration-500 ease-in-out"
           >
             Subscribe Now
           </button>

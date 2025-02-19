@@ -43,12 +43,13 @@ const AllClasses = () => {
   if (isError) return <div>Error fetching data</div>;
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="bg-gray-100 dark:bg-black pt-32 pb-16 dark:pb-0">
       <Helmet><title>FitMe | All Classes</title></Helmet>
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">All Classes</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">All Classes</h1>
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
 
       {/* Search Bar and Button */}
-      <div className="mb-4 flex items-center justify-center">
+      <div className="mb-8 flex items-center justify-center">
         <input
           type="text"
           placeholder="Search by class name"
@@ -59,7 +60,7 @@ const AllClasses = () => {
           }}
          
           //onClick={handleSearch} // Update search query on typing
-          className=" w-full md:w-[50%]  p-2 border border-gray-300 rounded-md"
+          className=" w-full md:w-[50%]  p-2 border border-gray-300 rounded-md dark:border-black dark:border-2"
         />
        
         {/* <button
@@ -71,12 +72,12 @@ const AllClasses = () => {
       </div>
 
       {/* Classes List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  container mx-auto w-[90%] px-4">
         {data?.classes?.length > 0 ? (
           data.classes.map((classItem) => (
             <div
               key={classItem._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  flex flex-col h-full"
+              className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  flex flex-col h-full dark:border-[#abc502] dark:border-2"
             >
               <img
                 src={classItem.class_image}
@@ -133,7 +134,7 @@ const AllClasses = () => {
                        
                       ))
                     ) : (
-                      <h1 className="text-sm font-semibold text-gray-700 mb-2">No Trainers Available yet.</h1>
+                      <h1 className="text-sm font-semibold text-gray-700 dark:text-gray-400 mb-2">No Trainers Available yet.</h1>
                     )}
                   </div>
                 </div>
@@ -141,7 +142,7 @@ const AllClasses = () => {
             </div>
           ))
         ) : (
-          <div className="w-full text-center text-gray-700">
+          <div className="w-full text-center text-gray-700 dark:text-gray-400">
             {searchQuery ? "No classes found for this search on this page." : "No classes available."}
           </div>
         )}
@@ -156,7 +157,7 @@ const AllClasses = () => {
         >
           Previous
         </button>
-        <span className="px-4 py-2 text-gray-700">
+        <span className="px-4 py-2 text-gray-700 dark:text-gray-400">
           Page {data?.currentPage} of {data?.totalPages}
         </span>
         <button

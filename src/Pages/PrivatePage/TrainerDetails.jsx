@@ -31,22 +31,24 @@ const TrainerDetails = () => {
 
   return (
     <div className="flex flex-col">
-     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 py-10">
+     <div className="bg-gray-100 dark:bg-black pt-32 pb-16 dark:pb-0 py-10">
       <Helmet><title>FitMe | Details of {trainer?.full_name}</title></Helmet>
-      <div className="w-full max-w-full overflow-x-auto px-4">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">Trainer {trainer?.full_name} Details</h1>
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
+      <div className="container mx-auto w-[90%] px-4">
+        <div className=" overflow-hidden">
           <div className="flex flex-col items-center gap-6">
             {/* Trainer Info Section */}
-            <div className="p-8 border-b-2">
+            <div className="py-8 border-b-2 border-[#abc502]">
               <div className="flex flex-col items-center text-center">
                 <img
                   src={trainer?.profile_image}
                   alt={trainer.full_name}
                   className="w-32 h-32 rounded-full shadow-lg mb-4"
                 />
-                <h2 className="text-2xl font-bold text-gray-800">{trainer.full_name}</h2>
-                <p className="text-gray-600">Age: {trainer.age}</p>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{trainer.full_name}</h2>
+                <p className="text-gray-600 dark:text-gray-400">Age: {trainer.age}</p>
+                <p className="text-gray-600 dark:text-gray-400">
                   Experience: {trainer.years_of_experience} years
                 </p>
                  {/* Social Links */}
@@ -76,13 +78,13 @@ const TrainerDetails = () => {
 
               {/* Biography */}
               <div className="mt-6">
-                <h3 className="text-lg font-bold text-gray-700">Biography</h3>
-                <p className="text-gray-600 mt-2">{trainer.biography}</p>
+                <h3 className="text-2xl font-bold text-gray-700 dark:text-white">Biography</h3>
+                <p className="text-gray-600 dark:text-gray-400 mt-2">{trainer.biography}</p>
               </div>
 
               {/* Skills */}
               <div className="mt-6">
-                <h3 className="text-lg font-bold text-gray-700">Skills</h3>
+                <h3 className="text-2xl font-bold text-gray-700 dark:text-white">Skills</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {trainer.skills.map((skill, index) => (
                     <span
@@ -99,7 +101,7 @@ const TrainerDetails = () => {
             </div>
 
             {/* Available Slots Section */}
-            <div className="p-8 bg-white text-black">
+            <div className="p-8 my-16 bg-white text-black">
   <h2 className="text-2xl font-bold text-center mb-6">Available Slots</h2>
   <div className="overflow-x-auto w-full">
     <table className="min-w-full border-collapse border border-gray-300">
@@ -139,7 +141,7 @@ const TrainerDetails = () => {
         </div>
       </div>
     </div>
-    <div className="my-6 min-h-48 container mx-auto w-[90%] flex flex-col items-center justify-center bg-gray-100 px-6 py-10 text-center relative">
+    <div className="my-6 min-h-48 container mx-auto w-[90%] px-4 flex flex-col items-center justify-center bg-gray-100  py-10 text-center relative dark:border-[#abc502] dark:border-2">
       {/* <img
         src="https://i.ibb.co.com/sJPn8H2/pexels-binyaminmellish-116078.jpg"
         alt="Fitness Background"

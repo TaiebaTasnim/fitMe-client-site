@@ -18,28 +18,29 @@ const AllTrainers = () => {
     },
   });
 
-  const convertTo12HourFormat = (time) => {
-      const [hour, minute] = time.split(":");
-      let hourInt = parseInt(hour);
-      const suffix = hourInt >= 12 ? "PM" : "AM";
-      hourInt = hourInt % 12 || 12; // Convert 0-11 to 12-hour format
-      return `${hourInt}:${minute} ${suffix}`;
-    };
+  // const convertTo12HourFormat = (time) => {
+  //     const [hour, minute] = time.split(":");
+  //     let hourInt = parseInt(hour);
+  //     const suffix = hourInt >= 12 ? "PM" : "AM";
+  //     hourInt = hourInt % 12 || 12; // Convert 0-11 to 12-hour format
+  //     return `${hourInt}:${minute} ${suffix}`;
+  //   };
     
 
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className=" bg-gray-100 dark:bg-black pt-32 pb-16 dark:pb-0">
       <Helmet><title>FitMe | All Trainers</title></Helmet>
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-        Verified Trainers
+      <h1 className="text-3xl font-bold text-center text-[#abc502] mb-6">
+        All Trainers
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-10">
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6   container mx-auto w-[90%] px-4">
         {trainers.map((trainer) => (
           <div
             key={trainer._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full"
+            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full dark:border-[#abc502] dark:border-2"
           >
             <img
               src={trainer.profile_image}
@@ -57,7 +58,7 @@ const AllTrainers = () => {
               <p className="text-gray-600 mb-2">
                 <strong>Skills:</strong> {trainer.skills.join(", ")}
               </p>
-              <p className="text-gray-600 mb-2"><strong>Available Slots:</strong></p>
+              {/* <p className="text-gray-600 mb-2"><strong>Available Slots:</strong></p>
               <div className="mb-4 grid grid-cols-2 gap-3">
                 
                 {trainer.slots.map((slot, index) => (
@@ -75,7 +76,7 @@ const AllTrainers = () => {
                   </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
               <div className="flex gap-4">
                 {trainer.facebook_profile && (
                   <a
