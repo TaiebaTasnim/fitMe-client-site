@@ -36,25 +36,25 @@ const TrainerBookedPage = () => {
 
 
   return (
-    <div className="container mx-auto w-[90%]">
+    <div className="">
       <Helmet><title>FitMe | Selected Slot info</title></Helmet>
       {/* Trainer Info Section */}
-      <div className="bg-white shadow-lg rounded-lg py-6 px-4 sm:px-8 lg:px-16 mb-8">
-        <div className="flex items-center gap-6">
+      <div className="  pt-32 px-4 sm:px-8 lg:px-4 mb-8">
+        <div className="flex md:justify-center items-center gap-6">
           <img
             src={trainer.profile_image}
             alt={trainer.full_name}
             className="w-32 h-32 rounded-full object-cover"
           />
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">{trainer.full_name}</h1>
-            <p className="text-gray-600">Selected Slot: {slot.available_day}</p>
-            <p className="text-gray-600">
+            <h1 className="text-2xl font-bold text-[#abc502]">{trainer.full_name}</h1>
+            <p className="text-gray-600 dark:text-gray-400">Selected Slot: {slot.available_day}</p>
+            <p className="text-gray-600 dark:text-gray-400">
               Time: {convertTo12HourFormat(slot.available_time.start)} -{" "}
               {convertTo12HourFormat(slot.available_time.end)}
             </p>
             <div className="mt-6">
-              <h3 className="text-lg font-bold text-gray-700">Classes</h3>
+              <h3 className="text-lg font-bold text-gray-700 dark:text-gray-400">Classes</h3>
               <div className="flex flex-wrap gap-2 mt-2">
                 {skills.map((skill, index) => (
                   <span
@@ -71,8 +71,8 @@ const TrainerBookedPage = () => {
       </div>
 
       {/* Packages Section */}
-      <div className="max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">Choose Your Membership</h2>
+      <div className="container w-[90%] mx-auto pb-10 px-4 pt-10 ">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#abc502]">Choose Your Membership</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((pkg, idx) => (
             <div

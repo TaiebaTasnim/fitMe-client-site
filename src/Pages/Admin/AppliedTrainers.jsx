@@ -20,11 +20,13 @@ const AppliedTrainers = () => {
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="">
       <Helmet><title>FitMe | Applied Trainers</title></Helmet>
-      <h1 className="text-2xl font-bold mb-6 text-center">Applied Trainers</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">All Aplied Trainers</h1>
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
 
-      {
+     <div className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+     {
         trainers.length > 0 ? (
           <div className="overflow-x-auto">
 
@@ -60,9 +62,10 @@ const AppliedTrainers = () => {
         </table>
       </div>
         ):(
-          <p className="text-center text-gray-700">No application for trainer found.</p>
+          <p className="text-center text-gray-700 dark:text-gray-400">No application for trainer found.</p>
         )
       }
+     </div>
     </div>
   );
 };

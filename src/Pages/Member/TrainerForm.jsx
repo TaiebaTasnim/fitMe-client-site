@@ -126,14 +126,14 @@ export const TrainerForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-black mt-20 dark:pb-0">
       <Helmet><title>FitMe | Trainer Form</title></Helmet>
       <form
         onSubmit={handleSubmit}
         ref={formRef}
-        className="bg-white shadow-2xl my-6 rounded-lg p-8 w-full max-w-4xl"
+        className="bg-white container mx-auto w-[88%] shadow-2xl  dark:mt-12 dark:my-0 my-6 rounded-lg p-8  "
       >
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-8">
+        <h2 className="text-2xl font-bold text-[#abc502] text-center mb-8">
           Be a Trainer
         </h2>
         <div className="grid grid-cols-2 gap-6">

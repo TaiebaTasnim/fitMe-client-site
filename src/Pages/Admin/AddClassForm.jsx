@@ -50,7 +50,7 @@ const AddClassForm = () => {
         ref={formRef}
         className="bg-white shadow-2xl rounded-lg p-6 w-full max-w-xl"
       >
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-6">
+        <h2 className="text-2xl font-bold text-[#abc502] text-center mb-6">
           Add New Class
         </h2>
 

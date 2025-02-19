@@ -556,7 +556,7 @@ const Dashboard = () => {
   </div>
 
   {/* Dashboard Content */}
-  <div className="dark:bg-black min-h-screen overflow-y-auto flex-1">
+  <div className="dark:bg-black min-h-screen overflow-y-auto flex-1 font-display">
   <div className="lg:ml-10 p-8  ">
     <Outlet />
   </div>

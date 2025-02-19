@@ -51,7 +51,7 @@ const Payment = () => {
   const skills = Array.isArray(classNames) ? classNames : [classNames];
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10">
+    <div className="bg-gray-100 dark:bg-black min-h-screen flex items-center justify-center mt-16 ">
       <Helmet><title>FitMe | Payment</title></Helmet>
       <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">

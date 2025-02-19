@@ -29,11 +29,15 @@ const Subscribers = () => {
   }
 
   return (
-    <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+    <section className="">
       <Helmet><title>FitMe | Subscribers</title></Helmet>
-      <h1 className="text-3xl font-bold text-center mb-6">All Newsletter Subscribers</h1>
+      
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">All Newsletter Subscribers</h1>
+      <div className="w-56 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
 
-      {subscribers?.length > 0 ? (
+
+    <div className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+    {subscribers?.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="table-auto w-full bg-white rounded-lg shadow-lg">
             <thead className="bg-[#abc502] text-white">
@@ -64,8 +68,9 @@ const Subscribers = () => {
           </table>
         </div>
       ) : (
-        <p className="text-center text-gray-700">No subscribers found.</p>
+        <p className="text-center text-gray-700 dark:text-gray-400">No subscribers found.</p>
       )}
+    </div>
     </section>
   );
 };

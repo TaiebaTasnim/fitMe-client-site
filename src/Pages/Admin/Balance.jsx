@@ -40,17 +40,22 @@ const Balance = () => {
       <Helmet>
         <title>FitMe | Balance</title>
       </Helmet>
-      <h1 className="text-3xl font-bold text-gray-800 text-center">Balance Overview</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">Balance Overview</h1>
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
 
       <div className="flex justify-center items-center flex-col  ">
 
        <div className='flex flex-col justify-around gap-10 md:flex-row  w-full'>
-       <div className='mt-10 space-y-4'>
-        <p className="text-2xl text-center md:text-start md:text-5xl ">Total Balance</p>
-        <p className="text-4xl text-center mt-10 font-bold text-[#abc502]">${balance.totalBalance || 0}</p>
+       <div className=' space-y-4'>
+        <p className="text-2xl text-center font-semibold md:text-start  ">Total Balance</p>
+        <div className='border-2 border-black rounded-lg flex justify-center items-center'>
+        <p className="text-4xl text-center p-5 font-bold text-[#abc502]">${balance.totalBalance || 0}</p>
+
+        </div>
+        
        </div>
        <div className="text-center">
-        <h3 className="text-lg font-semibold mb-3">Newsletter Subscribers vs Paid Members</h3>
+        <h3 className="text-2xl font-semibold mb-3">Newsletter Subscribers vs Paid Members</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -75,15 +80,15 @@ const Balance = () => {
        
       </div>
        <div className="overflow-x-auto bg-gray-50 p-4 rounded-lg shadow w-full">
-        <h2 className="text-lg font-semibold text-gray-700 mb-4">Latest Transactions</h2>
+        <h2 className="text-2xl font-semibold text-black mb-4">Latest Transactions</h2>
         <table className="min-w-full border border-gray-300 rounded-lg">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="p-3 border text-left">#</th>
-              <th className="p-3 border text-left">Trainer</th>
-              <th className="p-3 border text-left">User</th>
-              <th className="p-3 border text-left">Amount</th>
-              <th className="p-3 border text-left">Package</th>
+          <thead className="bg-[#abc502]">
+            <tr className='text-center'>
+              <th className="p-3 border ">#</th>
+              <th className="p-3 border ">Trainer Email</th>
+              <th className="p-3 border ">User Email</th>
+              <th className="p-3 border ">Amount</th>
+              <th className="p-3 border ">Package</th>
             </tr>
           </thead>
           <tbody>

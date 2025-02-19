@@ -50,13 +50,18 @@ const VerifiedTrainers = () => {
           };
         if (isLoading) return <LoadingSpinner />;
       return (
-            <div className="p-6 overflow-x-auto">
+            <div className="">
               <Helmet><title>FitMe | All Verified Trainers</title></Helmet>
-      <h1 className="text-2xl font-bold mb-4 text-center">All Trainers</h1>
-      {trainers.length === 0 ? (
-        <p>No verified trainers found.</p>
+              <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">All Trainers : {trainers.length}</h1>
+      <div className="w-36 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
+
+     
+     <div className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
+     {trainers.length === 0 ? (
+        <p className="text-gray-700 dark:text-gray-400 text-center">No verified trainers found.</p>
       ) : (
-        <table className="table-auto w-full border-collapse border border-gray-200">
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-[#abc502]">
               <th className="border border-gray-300 px-4 py-2">Name</th>
@@ -81,7 +86,9 @@ const VerifiedTrainers = () => {
             ))}
           </tbody>
         </table>
+        </div>
       )}
+     </div>
     </div>
       );
 };
