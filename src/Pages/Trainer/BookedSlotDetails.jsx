@@ -27,12 +27,12 @@ const BookedSlotDetails = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 mt-6 md:mt-0">
+    <div className="flex justify-center    dark:bg-black mt-6 md:mt-0">
       <Helmet>
         <title>FitMe | Booked Slot Details</title>
       </Helmet>
       <div className="max-w-3xl bg-white rounded-2xl shadow-lg p-10 space-y-8">
-        <h2 className="text-xl font-bold mb-4 text-blue-700 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-[#abc502] text-center">
           Booked Slot Details
         </h2>
        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

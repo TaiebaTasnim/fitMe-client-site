@@ -383,7 +383,7 @@ const Dashboard = () => {
 
   {!isSidebarOpen && (
     <button 
-      className="absolute top-4 left-4 lg:hidden text-2xl z-50" 
+      className="absolute top-4 left-4 lg:hidden text-2xl z-50 dark:text-white" 
       onClick={() => setIsSidebarOpen(!isSidebarOpen)}
     >
       <FaBars />
@@ -488,6 +488,14 @@ const Dashboard = () => {
                              Add New Forum </NavLink>
                      </li>
                     <div className="w-52 h-[2px] bg-black my-6 text-center"></div>
+                    <button className="text-xl md:text-2xl text-black " onClick={darkModehandler}>
+                      {
+                        dark && <IoSunny></IoSunny>
+                      }
+                       {
+                        !dark && <IoMoon></IoMoon>
+                      }
+                    </button>
                     <li className="flex items-center gap-2 font-display">
                         <FaHome />
                         <NavLink to="/" onClick={handleNavLinkClick}>
@@ -548,12 +556,15 @@ const Dashboard = () => {
   </div>
 
   {/* Dashboard Content */}
-  <div className="dark:bg-black flex-1">
-  <div className="flex-1 lg:ml-10 p-8 min-h-screen overflow-y-auto ">
+  <div className="dark:bg-black min-h-screen overflow-y-auto flex-1">
+  <div className="lg:ml-10 p-8  ">
     <Outlet />
   </div>
 
   </div>
+  
+
+  
   
 </div>
 

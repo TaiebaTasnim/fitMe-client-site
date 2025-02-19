@@ -74,7 +74,9 @@ const ManageSlots = () => {
   return (
     <div className="container mx-auto p-6 bg-gray-100 dark:bg-black mt-6 rounded-lg shadow-lg">
       <Helmet><title>FitMe | Manage Slots</title></Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-center">Manage Slots</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center text-[#abc502]">Manage Slots – Schedule & Optimize Your Sessions 
+      </h2>
+      <div className="w-60 h-[2px] mx-auto bg-[#abc502] mb-8 text-center"></div>
       <div className="overflow-x-auto">
       <table className="table-auto w-full bg-white rounded-lg shadow-lg">
         <thead className="bg-[#abc502] text-black">

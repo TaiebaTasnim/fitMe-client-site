@@ -128,7 +128,7 @@ const slots = formData.days.map((day) => ({
   };
 
   return (
-    <div className="p-6 bg-gray-100 rounded-md shadow-md mt-6 lg:mt-0">
+    <div className="p-6 bg-gray-100  rounded-md shadow-md mt-6 lg:mt-0">
       <Helmet><title>FitMe | Add Slots</title></Helmet>
       {trainerData?.email ? (
         <form onSubmit={handleSubmit}>

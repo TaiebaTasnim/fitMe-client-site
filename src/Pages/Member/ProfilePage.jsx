@@ -67,7 +67,7 @@ const ProfilePage = () => {
   return (
     <section className="container mx-auto p-6">
       <Helmet><title>FitMe | {userData?.name}&apos;s Profile</title></Helmet>
-      <div className="bg-gray-100 rounded-lg shadow-md p-6 max-w-md mx-auto">
+      <div className="bg-gray-100 rounded-lg shadow-md p-6 w-full mx-auto">
         <div className="text-center">
           <img
             src={userData?.image}

@@ -79,7 +79,7 @@ const BookedTrainer = () => {
   return (
     <section className="container mx-auto p-6 my-10 bg-gray-100 rounded-lg shadow-lg">
       <Helmet><title>FitMe | All Booked Trainers</title></Helmet>
-      <h1 className="text-3xl font-bold text-center mb-6">Trainer Details</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-[#abc502]">Booked Trainer Details</h1>
 
       {payments.length > 0 ? (
         <div className="overflow-x-auto">
