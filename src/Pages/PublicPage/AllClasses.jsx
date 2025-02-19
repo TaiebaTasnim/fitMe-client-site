@@ -23,7 +23,7 @@ const AllClasses = () => {
           sort: sortOrder,
         },
       });
-      
+
       return res.data;
     },
     keepPreviousData: true,
@@ -80,13 +80,41 @@ const AllClasses = () => {
                   {classItem.class_details.length > 50 ? `${classItem.class_details.substring(0, 50)}...` : classItem.class_details}
                 </p>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-700 mb-2">Trainers</h3>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">Trainers who took this class</h3>
                   <div className="flex items-center space-x-3">
                     {classItem.trainers.length > 0 ? (
                       classItem.trainers.map((trainer, index) => (
                         <Link key={index} to={`/trainerDetails/${trainer._id}`}>
-                          <img src={trainer.profile_image} alt={trainer.full_name} className="w-10 h-10 rounded-full border-2 border-gray-200" />
-                          <ReactTooltip id={`tooltip-${trainer._id}`} place="bottom" effect="solid" content={trainer.full_name} />
+                         <div  className="relative"
+                  data-tooltip-id={`tooltip-${classItem.class_name}`}
+                  data-tooltip-content={trainer.full_name}
+                  style={{
+                    display: "inline-block",
+                    position: "relative",
+                  }}>
+                          <img
+                            src={trainer.
+                              profile_image}
+                            alt={trainer.full_name}
+                            className="w-10 h-10 rounded-full border-2 border-gray-200"
+                            style={{
+                              position: "relative",
+                              zIndex: 1, // To ensure the image is above the tooltip
+                            }}/>
+                          <ReactTooltip id={`tooltip-${classItem.class_name}`} place="bottom" effect="solid"  style={{
+                    backgroundColor: "#abc502",
+                    color: "black",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    fontSize: "12px",
+                    position: "absolute",
+                    //transform: "translateY(-1px)", // Moves tooltip upwards
+                    zIndex: 10,
+                    whiteSpace: "nowrap",
+                  }} />
+                          
+                          
+                        </div>
                         </Link>
                       ))
                     ) : (
